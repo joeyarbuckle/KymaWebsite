@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources | Kyma Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:        #2b2c33;
+    --bone:       #efede8;
+    --sand:       #e8e5de;
+    --tide:       #4e4b4a;
+    --tide-light: #797472;
+    --gold:       #7a4228;
+    --gold-pale:  #975835;
+    --gold-light: #f4e8e0;
+    --mist:       #8a8d99;
+    --white:      #f9f8f7;
+    --rule:       #dedad3;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 56px;
+    background: rgba(249,248,247,0.96);
+    border-bottom: 1px solid var(--rule);
+    backdrop-filter: blur(8px);
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 500; letter-spacing: 0.14em;
+    color: var(--gold); text-decoration: none;
+  }
+  .logo span { color: var(--tide-light); }
+  nav a.cta-nav {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--white); background: var(--gold);
+    padding: 11px 28px; text-decoration: none;
+    transition: background 0.3s;
+    font-family: 'DM Sans', sans-serif; font-weight: 400;
+  }
+  nav a.cta-nav:hover { background: var(--gold-pale); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 52vh;
+    position: relative;
+    display: flex; align-items: center;
+    overflow: hidden;
+    background: var(--bone);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 80% at 100% 50%, rgba(151,88,53,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 0% 100%, rgba(151,88,53,0.05) 0%, transparent 50%),
+      linear-gradient(160deg, #f9f8f7 0%, #efede8 50%, #e8e5de 100%);
+  }
+  .grid-lines {
+    position: absolute; inset: 0; opacity: 0.06;
+    background-image:
+      linear-gradient(var(--tide) 1px, transparent 1px),
+      linear-gradient(90deg, var(--tide) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  .wave-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 160px; opacity: 0.07;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 760px;
+    padding: 160px 80px 88px;
+  }
+  .eyebrow {
+    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 16px; font-weight: 400;
+  }
+  .eyebrow::before { content: ''; display: block; width: 36px; height: 1px; background: var(--gold); }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 5vw, 66px);
+    font-weight: 300; line-height: 1.1;
+    color: var(--ink); margin-bottom: 28px;
+  }
+  h1 em { font-style: italic; color: var(--gold); }
+  .hero-sub {
+    font-size: 17px; line-height: 1.8; color: var(--tide);
+    max-width: 540px; font-weight: 300;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 80px; }
+  .section-label {
+    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px; font-weight: 400;
+  }
+  .section-label::before { content: ''; width: 28px; height: 1px; background: var(--gold); display: block; }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 3.5vw, 48px);
+    font-weight: 300; line-height: 1.14; color: var(--ink);
+  }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  /* ── WHITE PAPER ── */
+  .whitepaper {
+    background: var(--white);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .wp-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 88px; align-items: start;
+  }
+  .wp-left h2 { margin-bottom: 20px; }
+  .wp-left p { font-size: 15.5px; line-height: 1.9; color: var(--tide); margin-bottom: 20px; }
+  .wp-left p + p { padding-top: 20px; border-top: 1px solid var(--rule); }
+
+  .wp-card {
+    background: var(--bone);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--gold);
+    overflow: hidden;
+  }
+  .wp-card-header {
+    padding: 32px 36px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--ink);
+  }
+  .wp-card-header .wp-label {
+    font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(239,237,232,0.45); margin-bottom: 10px; font-weight: 400;
+  }
+  .wp-card-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400; color: var(--bone); line-height: 1.3;
+  }
+  .wp-card-header p {
+    font-size: 13px; color: rgba(239,237,232,0.55); margin-top: 10px; line-height: 1.6;
+    font-style: italic;
+  }
+  .wp-contents { padding: 28px 36px; }
+  .wp-contents ul { list-style: none; }
+  .wp-contents ul li {
+    font-size: 13px; color: var(--tide); padding: 9px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex; gap: 10px; line-height: 1.6; align-items: flex-start;
+  }
+  .wp-contents ul li:last-child { border-bottom: none; }
+  .wp-contents ul li::before { content: '✦'; color: var(--gold); font-size: 8px; margin-top: 4px; flex-shrink: 0; }
+  .wp-cta { padding: 24px 36px; border-top: 1px solid var(--rule); }
+
+  .btn-primary {
+    background: var(--gold); color: var(--white);
+    padding: 15px 32px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.3s;
+    font-family: 'DM Sans', sans-serif; font-weight: 400; display: inline-block;
+    border: none; cursor: pointer; width: 100%; text-align: center;
+  }
+  .btn-primary:hover { background: var(--gold-pale); }
+
+  /* ── LANDOWNER LETTER ── */
+  .letter {
+    background: var(--bone);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .letter-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 88px; align-items: start;
+  }
+  .letter-left h2 { margin-bottom: 20px; }
+  .letter-left p { font-size: 15.5px; line-height: 1.9; color: var(--tide); margin-bottom: 20px; }
+
+  .letter-signup {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 44px 40px;
+  }
+  .letter-signup h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 400; color: var(--ink); margin-bottom: 8px;
+  }
+  .letter-signup .sub {
+    font-size: 13.5px; color: var(--tide-light); margin-bottom: 28px; line-height: 1.65;
+  }
+  .form-group { margin-bottom: 14px; }
+  .form-group label {
+    display: block; font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--tide-light); margin-bottom: 7px; font-weight: 400;
+  }
+  .form-group input {
+    width: 100%; padding: 13px 14px;
+    border: 1px solid var(--rule); border-radius: 0;
+    font-family: 'DM Sans', sans-serif; font-size: 14.5px; color: var(--ink);
+    background: var(--white); transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus { border-color: var(--gold); background: var(--gold-light); }
+  .consent { font-size: 12px; color: var(--mist); line-height: 1.6; margin: 14px 0 20px; }
+
+  .archive-placeholder {
+    margin-top: 32px;
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--rule);
+    padding: 24px 28px;
+    background: rgba(138,141,153,0.04);
+  }
+  .archive-placeholder p {
+    font-size: 13px; color: var(--mist); font-style: italic; line-height: 1.7;
+  }
+  .archive-placeholder strong {
+    display: block; font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--tide-light);
+    font-style: normal; font-weight: 400; margin-bottom: 8px;
+  }
+
+  /* ── FAQ ── */
+  .faq {
+    background: var(--white);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .faq-header { max-width: 640px; margin-bottom: 64px; }
+  .faq-header p { margin-top: 20px; font-size: 16px; line-height: 1.85; color: var(--tide); }
+
+  .faq-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--rule);
+  }
+  .faq-item {
+    padding: 36px 40px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.3s;
+  }
+  .faq-item:nth-child(2n) { border-right: none; }
+  .faq-item:nth-last-child(-n+2) { border-bottom: none; }
+  .faq-item:hover { background: var(--bone); }
+  .faq-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400;
+    color: var(--ink); margin-bottom: 14px; line-height: 1.3;
+  }
+  .faq-item p { font-size: 14px; line-height: 1.85; color: var(--tide); }
+
+  /* ── THOUGHT LEADERSHIP ── */
+  .thought {
+    background: var(--bone);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .thought-header { max-width: 640px; margin-bottom: 64px; }
+  .thought-header p { margin-top: 20px; font-size: 16px; line-height: 1.85; color: var(--tide); }
+
+  .thought-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule);
+  }
+  .thought-card {
+    padding: 40px 36px;
+    border-right: 1px solid var(--rule);
+    background: var(--white);
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+  }
+  .thought-card:last-child { border-right: none; }
+  .thought-card:hover { background: var(--gold-light); }
+  .thought-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: transparent; transition: background 0.3s;
+  }
+  .thought-card:hover::before { background: var(--gold); }
+  .thought-tag {
+    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); font-weight: 400; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .thought-tag::before { content: ''; width: 18px; height: 1px; background: var(--gold); display: block; }
+  .thought-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400;
+    color: var(--ink); margin-bottom: 14px; line-height: 1.3;
+  }
+  .thought-card p { font-size: 13.5px; line-height: 1.8; color: var(--tide); margin-bottom: 20px; }
+  .thought-coming {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--mist); font-weight: 400;
+    padding-top: 16px; border-top: 1px solid var(--rule);
+  }
+
+  /* ── CTA ── */
+  .cta-band {
+    background: var(--gold);
+    padding: 88px 80px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-band::before {
+    content: 'KYMA';
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 260px; font-weight: 600;
+    color: rgba(255,255,255,0.06);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    white-space: nowrap; pointer-events: none; letter-spacing: 0.05em;
+  }
+  .cta-band h2 { color: var(--white); margin-bottom: 20px; position: relative; z-index: 1; }
+  .cta-band h2 em { color: rgba(255,255,255,0.7); }
+  .cta-band p {
+    font-size: 16px; line-height: 1.8; color: rgba(249,248,247,0.75);
+    max-width: 500px; margin: 0 auto 40px; position: relative; z-index: 1;
+  }
+  .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+  .btn-white {
+    background: var(--white); color: var(--gold);
+    padding: 16px 36px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.3s;
+    font-family: 'DM Sans', sans-serif; font-weight: 400; display: inline-block;
+  }
+  .btn-white:hover { background: var(--bone); transform: translateY(-1px); }
+  .btn-outline-white {
+    background: transparent; color: var(--white);
+    padding: 16px 36px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    text-decoration: none; border: 1px solid rgba(255,255,255,0.45);
+    transition: all 0.3s; font-family: 'DM Sans', sans-serif; font-weight: 400; display: inline-block;
+  }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.12); border-color: var(--white); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 56px 80px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 24px;
+  }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--gold); letter-spacing: 0.14em; }
+  .footer-links { display: flex; gap: 32px; }
+  .footer-links a {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(239,237,232,0.45); text-decoration: none; transition: color 0.2s; font-weight: 400;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  footer p { font-size: 11.5px; color: rgba(239,237,232,0.28); width: 100%; line-height: 1.7; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeInUp 0.9s ease both; }
+  .fade-in-delay-1 { animation: fadeInUp 0.9s 0.2s ease both; }
+  .fade-in-delay-2 { animation: fadeInUp 0.9s 0.4s ease both; }
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Success state */
+  .success-msg { display: none; text-align: center; padding: 32px 20px; }
+  .success-msg .check {
+    width: 52px; height: 52px; background: var(--gold); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px; font-size: 20px; color: white;
+  }
+  .success-msg h3 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: var(--ink); margin-bottom: 8px; }
+  .success-msg p { color: var(--tide-light); font-size: 14px; line-height: 1.7; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .hero-content { padding: 120px 24px 72px; }
+    section { padding: 72px 24px; }
+    .wp-inner, .letter-inner { grid-template-columns: 1fr; gap: 48px; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .faq-item:nth-child(2n) { border-right: 1px solid var(--rule); }
+    .faq-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
+    .faq-item:last-child { border-bottom: none; }
+    .thought-grid { grid-template-columns: 1fr; }
+    .thought-card { border-right: none; border-bottom: 1px solid var(--rule); }
+    .thought-card:last-child { border-bottom: none; }
+    .cta-band { padding: 72px 24px; }
+    footer { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="index.html">KYMA<span>.</span></a>
+  <a class="cta-nav" href="index.html#capture">Request a Land Assessment</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="grid-lines"></div>
+  <svg class="wave-overlay" viewBox="0 0 1440 160" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,80 C240,20 480,140 720,80 C960,20 1200,140 1440,80 L1440,160 L0,160 Z" fill="rgba(122,66,40,1)"/>
+  </svg>
+  <div class="hero-content">
+    <div class="eyebrow fade-in">Knowledge & Resources</div>
+    <h1 class="fade-in-delay-1">
+      Everything you need<br>to understand the <em>Kyma model.</em>
+    </h1>
+    <p class="hero-sub fade-in-delay-2">
+      The white paper. The landowner letter. Answers to the questions we hear most often. And a growing library of thought leadership on land, development, and the economics of patient ownership.
+    </p>
+  </div>
+</section>
+
+<!-- WHITE PAPER -->
+<section class="whitepaper" id="whitepaper">
+  <div class="wp-inner">
+    <div class="wp-left reveal">
+      <div class="section-label">The Essential Resource</div>
+      <h2>The Landowner's<br><em>Blueprint.</em></h2>
+      <p>
+        Our white paper — <em>How to Turn Idle Land Into Durable Net Cash Flows</em> — is the most complete explanation of the Kyma model available. It covers every phase of the process in plain language: how we determine highest and best use, how your land is valued, how the joint venture is structured, how profits flow, and how you make your final election.
+      </p>
+      <p>
+        It is written for landowners who want to fully understand what they are considering before having a conversation — and for the advisors who serve them. Download it, read it at your own pace, and come to any conversation with us fully informed.
+      </p>
+    </div>
+    <div class="wp-right reveal">
+      <div class="wp-card">
+        <div class="wp-card-header">
+          <div class="wp-label">White Paper — Kyma Partners</div>
+          <h3>The Landowner's Blueprint: How to Turn Idle Land Into Durable Net Cash Flows</h3>
+          <p>A plain-language guide to the Kyma joint venture model — from first conversation to first distribution.</p>
+        </div>
+        <div class="wp-contents">
+          <ul>
+            <li>How highest-and-best-use analysis works</li>
+            <li>What the entitlement process looks like and who bears the cost</li>
+            <li>How joint ventures are structured between landowners and developers</li>
+            <li>The difference between fee income, promote, and equity</li>
+            <li>How to evaluate hold vs. exit for maximum after-tax wealth</li>
+            <li>Real project timelines: raw land to stabilized cash flow</li>
+            <li>Estate planning considerations for landowners with heirs</li>
+            <li>Tax considerations: Section 721, 1031 exchanges, depreciation</li>
+          </ul>
+        </div>
+        <div class="wp-cta" id="wp-form-area">
+          <div id="wp-form">
+            <div class="form-group">
+              <label>Your Email Address</label>
+              <input type="email" id="wp-email" placeholder="you@example.com">
+            </div>
+            <div class="consent">Enter your email to receive the white paper instantly. We respect your privacy and never sell your information.</div>
+            <button class="btn-primary" onclick="handleWPDownload(event)">Download the White Paper →</button>
+          </div>
+          <div class="success-msg" id="wp-success">
+            <div class="check">✓</div>
+            <h3>On its way.</h3>
+            <p>The white paper has been sent to your inbox. A Kyma principal will follow up within one business day.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LANDOWNER LETTER -->
+<section class="letter" id="letter">
+  <div class="letter-inner">
+    <div class="letter-left reveal">
+      <div class="section-label">Quarterly Landowner Letter</div>
+      <h2>Straight talk on land,<br>markets, and <em>development.</em></h2>
+      <p>
+        Four times a year, Kyma publishes a short letter written directly for landowners — not investors, not developers. It covers market conditions, entitlement trends, development economics, and the questions we hear most often from the families we work with.
+      </p>
+      <p>
+        No jargon. No sales pitch. Just plain, informed perspective from principals who have spent decades on both sides of the development equation.
+      </p>
+      <div class="archive-placeholder">
+        <strong>Archive — Coming Soon</strong>
+        <p>Past issues of the Kyma Landowner Letter will be archived here as they are published. Subscribe below to receive each issue directly to your inbox.</p>
+      </div>
+    </div>
+    <div class="letter-right reveal">
+      <div class="letter-signup">
+        <h3>Subscribe to the Letter</h3>
+        <p class="sub">Quarterly. Plain language. Written for landowners. No spam, ever — and you can unsubscribe at any time.</p>
+        <div id="letter-form">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" id="letter-fname" placeholder="First name">
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="letter-email" placeholder="you@example.com">
+          </div>
+          <div class="consent">By subscribing, you agree to receive the quarterly Kyma Landowner Letter. We never sell or share your information.</div>
+          <button class="btn-primary" onclick="handleLetterSignup(event)">Subscribe to the Letter →</button>
+        </div>
+        <div class="success-msg" id="letter-success">
+          <div class="check">✓</div>
+          <h3>You're subscribed.</h3>
+          <p>You'll receive the next issue of the Kyma Landowner Letter when it's published. We'll never send you anything else without your permission.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-header reveal">
+    <div class="section-label">Frequently Asked Questions</div>
+    <h2>The questions we hear<br><em>most often.</em></h2>
+    <p>These are the questions that come up in nearly every first conversation with a landowner. If yours isn't here, the white paper almost certainly covers it — or ask us directly.</p>
+  </div>
+
+  <div class="faq-grid">
+    <div class="faq-item reveal">
+      <h4>Do I have to put up any money?</h4>
+      <p>No. Your contribution to the joint venture is your land, valued at independently appraised market value. Kyma and its development partners provide all cash equity and carry all construction loan guarantees. You are not required to invest capital at any stage.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h4>What happens to ownership of my land during development?</h4>
+      <p>Title transfers to the project entity — a special purpose LLC — upon closing of the construction loan. This is required for the developer to secure financing. In exchange, you receive a membership interest in that entity carrying all the economic rights described in your joint venture agreement.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h4>How is the value of my land determined?</h4>
+      <p>By an independent MAI-designated appraiser — not by Kyma. The appraised value becomes your equity credit in the joint venture, treated exactly as if you had contributed that amount in cash. You have the right to review and accept the appraisal before any agreement is finalized.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h4>What if the project goes over budget or runs into trouble?</h4>
+      <p>The developer carries a completion guarantee on the construction loan, ensuring the project reaches substantial completion regardless of cost overruns. The landowner is not a guarantor and is not exposed to construction debt. Cost overruns are a developer risk, not a landowner risk.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h4>When do I start seeing income?</h4>
+      <p>You begin participating in developer fee income during the construction and lease-up phase, per the joint venture agreement. If you elect Path A at stabilization, quarterly distributions from net operating income begin shortly after permanent financing is placed.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h4>What if I want to sell my interest later?</h4>
+      <p>The joint venture agreement will specify transfer restrictions and rights of first refusal among members. In most structures, a landowner electing Path A can sell their crystallized equity interest subject to these provisions — and a future sale may be eligible for a 1031 exchange into replacement property.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h4>Can this work for land held in a trust or estate?</h4>
+      <p>Yes. Kyma regularly works with land held in family trusts, irrevocable trusts, and estates with multiple beneficiaries. The joint venture structure can be adapted to accommodate complex ownership situations, and the resulting income-producing interest is generally more estate-friendly than raw land with no income.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h4>How long does the whole process take?</h4>
+      <p>From first conversation to first quarterly distribution typically takes 48 to 57 months, depending on asset class, entitlement complexity, market conditions, and project scale. The white paper includes a detailed phase-by-phase timeline with milestones and landowner responsibilities at each stage.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THOUGHT LEADERSHIP -->
+<section class="thought" id="insights">
+  <div class="thought-header reveal">
+    <div class="section-label">Perspectives</div>
+    <h2>Informed thinking on land,<br>capital, and <em>patient ownership.</em></h2>
+    <p>A growing library of short-form writing from the Kyma principals — on entitlement, development economics, landowner strategy, and the forces shaping land values across the markets we work in.</p>
+  </div>
+  <div class="thought-grid">
+    <div class="thought-card reveal">
+      <div class="thought-tag">Entitlement</div>
+      <h3>The Entitlement Multiplier: Why the Biggest Land Value Gains Happen Before Construction Begins</h3>
+      <p>Raw land and entitled land can be separated by a factor of ten — or more. Understanding why, and who captures that gain, is the most important concept in development economics for landowners.</p>
+      <div class="thought-coming">Coming Q2 2025</div>
+    </div>
+    <div class="thought-card reveal">
+      <div class="thought-tag">Joint Ventures</div>
+      <h3>What Landowners Don't Know About the Waterfall — And Why It Costs Them</h3>
+      <p>Most landowners who sell pre-entitlement never see the promote, the fees, or the permanent equity upside they gave up. This piece explains how the waterfall actually works — and how to make sure you're in it.</p>
+      <div class="thought-coming">Coming Q2 2025</div>
+    </div>
+    <div class="thought-card reveal">
+      <div class="thought-tag">Estate Planning</div>
+      <h3>Idle Land and the Estate Problem: Why Raw Acreage Is Harder to Pass On Than You Think</h3>
+      <p>Land without income creates estate planning complications — forced sales, partition actions, and tax exposure. There is a better way to structure it for the next generation.</p>
+      <div class="thought-coming">Coming Q3 2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <h2>Still have questions?<br><em>We welcome them.</em></h2>
+  <p>The best way to understand whether the Kyma model is right for your land is a direct conversation with one of our principals — no cost, no obligation, no pressure.</p>
+  <div class="cta-actions">
+    <a href="contact.html" class="btn-white">Contact a Kyma Principal</a>
+    <a href="how-it-works.html" class="btn-outline-white">How It Works</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">KYMA.</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="about.html">About</a>
+    <a href="advisors.html">For Advisors</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p>© 2025 Kyma Partners &nbsp;|&nbsp; kymapartners.co &nbsp;|&nbsp; This material is for informational purposes only and does not constitute an offer or solicitation to invest. Past performance is not indicative of future results. All investments involve risk.</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(r => observer.observe(r));
+
+  function handleWPDownload(e) {
+    e.preventDefault();
+    const email = document.getElementById('wp-email').value;
+    if (!email) { alert('Please enter your email address.'); return; }
+    console.log('WP Download:', { email, source: 'resources-page', timestamp: new Date().toISOString() });
+    document.getElementById('wp-form').style.display = 'none';
+    document.getElementById('wp-success').style.display = 'block';
+  }
+
+  function handleLetterSignup(e) {
+    e.preventDefault();
+    const email = document.getElementById('letter-email').value;
+    if (!email) { alert('Please enter your email address.'); return; }
+    console.log('Letter Signup:', {
+      name: document.getElementById('letter-fname').value,
+      email, source: 'resources-page', timestamp: new Date().toISOString()
+    });
+    document.getElementById('letter-form').style.display = 'none';
+    document.getElementById('letter-success').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

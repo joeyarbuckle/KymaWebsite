@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Advisors | Kyma Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:        #2b2c33;
+    --bone:       #efede8;
+    --sand:       #e8e5de;
+    --tide:       #4e4b4a;
+    --tide-light: #797472;
+    --gold:       #7a4228;
+    --gold-pale:  #975835;
+    --gold-light: #f4e8e0;
+    --mist:       #8a8d99;
+    --white:      #f9f8f7;
+    --rule:       #dedad3;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 56px;
+    background: rgba(249,248,247,0.96);
+    border-bottom: 1px solid var(--rule);
+    backdrop-filter: blur(8px);
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 500; letter-spacing: 0.14em;
+    color: var(--gold); text-decoration: none;
+  }
+  .logo span { color: var(--tide-light); }
+  nav a.cta-nav {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--white); background: var(--gold);
+    padding: 11px 28px; text-decoration: none;
+    transition: background 0.3s;
+    font-family: 'DM Sans', sans-serif; font-weight: 400;
+  }
+  nav a.cta-nav:hover { background: var(--gold-pale); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 72vh;
+    position: relative;
+    display: flex; align-items: center;
+    overflow: hidden;
+    background: var(--bone);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 80% at 100% 50%, rgba(151,88,53,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 0% 100%, rgba(151,88,53,0.05) 0%, transparent 50%),
+      linear-gradient(160deg, #f9f8f7 0%, #efede8 50%, #e8e5de 100%);
+  }
+  .grid-lines {
+    position: absolute; inset: 0; opacity: 0.06;
+    background-image:
+      linear-gradient(var(--tide) 1px, transparent 1px),
+      linear-gradient(90deg, var(--tide) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  .wave-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 220px; opacity: 0.07;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 820px;
+    padding: 160px 80px 100px;
+  }
+  .eyebrow {
+    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 16px;
+    font-weight: 400;
+  }
+  .eyebrow::before {
+    content: ''; display: block; width: 36px; height: 1px; background: var(--gold);
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5.5vw, 72px);
+    font-weight: 300; line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--ink); margin-bottom: 32px;
+  }
+  h1 em { font-style: italic; color: var(--gold); }
+  .hero-sub {
+    font-size: 17px; line-height: 1.8; color: var(--tide);
+    max-width: 580px; font-weight: 300;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 80px; }
+
+  .section-label {
+    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+    font-weight: 400;
+  }
+  .section-label::before { content: ''; width: 28px; height: 1px; background: var(--gold); display: block; }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300; line-height: 1.12;
+    color: var(--ink);
+  }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  /* ── VALUE PROP STRIP ── */
+  .value-strip {
+    background: var(--ink);
+    padding: 64px 80px;
+    display: grid;
+    grid-template-columns: 1fr 2px 1fr 2px 1fr;
+    gap: 0;
+    align-items: start;
+  }
+  .value-strip-divider {
+    background: rgba(239,237,232,0.12);
+    align-self: stretch;
+  }
+  .value-item {
+    padding: 0 52px;
+  }
+  .value-item:first-child { padding-left: 0; }
+  .value-item:last-child { padding-right: 0; }
+  .value-item-eyebrow {
+    font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: rgba(239,237,232,0.45); margin-bottom: 16px; font-weight: 400;
+  }
+  .value-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 400;
+    color: var(--bone); margin-bottom: 14px; line-height: 1.2;
+  }
+  .value-item p {
+    font-size: 14px; line-height: 1.8;
+    color: rgba(239,237,232,0.6);
+  }
+
+  /* ── WHO THIS IS FOR ── */
+  .who {
+    background: var(--white);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .who-header { max-width: 640px; margin-bottom: 64px; }
+  .who-header p { margin-top: 20px; font-size: 16px; line-height: 1.85; color: var(--tide); }
+
+  .advisor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--rule);
+    margin-bottom: 0;
+  }
+  .advisor-card {
+    padding: 44px 36px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.3s;
+    position: relative;
+  }
+  .advisor-card:nth-child(3n) { border-right: none; }
+  .advisor-card:nth-last-child(-n+3) { border-bottom: none; }
+  .advisor-card:hover { background: var(--bone); }
+  .advisor-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: transparent; transition: background 0.3s;
+  }
+  .advisor-card:hover::before { background: var(--gold); }
+  .advisor-icon {
+    font-size: 28px; margin-bottom: 20px; display: block;
+  }
+  .advisor-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400;
+    color: var(--gold); margin-bottom: 12px;
+  }
+  .advisor-card p { font-size: 14px; line-height: 1.8; color: var(--tide); }
+  .advisor-card .trigger {
+    margin-top: 20px; padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    font-size: 12px; font-weight: 400;
+    color: var(--tide-light); line-height: 1.6;
+  }
+  .advisor-card .trigger strong {
+    display: block; font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 6px; font-weight: 400;
+  }
+
+  /* ── HOW IT WORKS FOR ADVISORS ── */
+  .how {
+    background: var(--bone);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .how-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 88px;
+    align-items: start;
+  }
+  .how-left h2 { margin-bottom: 24px; }
+  .how-left p {
+    font-size: 15.5px; line-height: 1.9; color: var(--tide); margin-bottom: 20px;
+  }
+  .how-left p + p {
+    padding-top: 20px; border-top: 1px solid var(--rule);
+  }
+
+  .how-steps { }
+  .how-step {
+    display: flex; gap: 28px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: flex-start;
+  }
+  .how-step:first-child { padding-top: 0; }
+  .how-step:last-child { border-bottom: none; }
+  .how-step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px; font-weight: 300;
+    color: rgba(122,66,40,0.3); line-height: 1;
+    flex-shrink: 0; width: 48px;
+  }
+  .how-step-content h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .how-step-content p {
+    font-size: 14px; line-height: 1.8; color: var(--tide);
+  }
+
+  /* ── WHAT YOUR CLIENT RECEIVES ── */
+  .client-outcome {
+    background: var(--white);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .outcome-header { max-width: 640px; margin-bottom: 64px; }
+  .outcome-header p { margin-top: 20px; font-size: 16px; line-height: 1.85; color: var(--tide); }
+
+  .outcome-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .outcome-card {
+    border: 1px solid var(--rule);
+    padding: 44px 40px;
+    background: var(--white);
+    position: relative; overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .outcome-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(43,44,51,0.07); }
+  .outcome-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: var(--gold);
+  }
+  .outcome-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 400;
+    color: var(--ink); margin-bottom: 16px;
+  }
+  .outcome-card p {
+    font-size: 14.5px; line-height: 1.85; color: var(--tide); margin-bottom: 20px;
+  }
+  .outcome-card ul { list-style: none; }
+  .outcome-card ul li {
+    font-size: 13.5px; color: var(--tide);
+    padding: 9px 0; border-bottom: 1px solid var(--rule);
+    display: flex; align-items: flex-start; gap: 10px; line-height: 1.6;
+  }
+  .outcome-card ul li:last-child { border-bottom: none; }
+  .outcome-card ul li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
+
+  /* ── DISCLOSURES NOTE ── */
+  .disclosure-note {
+    background: var(--bone);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 48px 80px;
+  }
+  .disclosure-note-inner {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    align-items: start;
+    max-width: 900px;
+  }
+  .disclosure-note-label {
+    font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold); font-weight: 400; padding-top: 3px;
+  }
+  .disclosure-note-body {
+    font-size: 13.5px; line-height: 1.85; color: var(--tide);
+  }
+  .disclosure-note-body p + p { margin-top: 12px; }
+
+  /* ── REFERRAL FORM ── */
+  .referral {
+    background: var(--bone);
+    border-top: 1px solid var(--rule);
+    position: relative; overflow: hidden;
+  }
+  .referral::before {
+    content: 'KYMA';
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 260px; font-weight: 600;
+    color: rgba(122,66,40,0.04);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    white-space: nowrap; pointer-events: none;
+    letter-spacing: 0.05em;
+  }
+  .referral-inner {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 88px; align-items: start;
+  }
+  .referral-left h2 { margin-bottom: 20px; }
+  .referral-left p {
+    font-size: 16px; line-height: 1.85; color: var(--tide); margin-bottom: 28px;
+  }
+
+  .what-happens {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--gold);
+    padding: 28px 32px;
+  }
+  .what-happens h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 400; color: var(--ink); margin-bottom: 16px;
+  }
+  .what-happens ul { list-style: none; }
+  .what-happens ul li {
+    font-size: 13px; color: var(--tide); padding: 7px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex; gap: 10px; line-height: 1.6;
+  }
+  .what-happens ul li:last-child { border-bottom: none; }
+  .what-happens ul li::before { content: '✦'; color: var(--gold); font-size: 8px; margin-top: 4px; flex-shrink: 0; }
+
+  /* Form panel */
+  .form-panel {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 52px 48px;
+  }
+  .form-panel h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px; font-weight: 400;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .form-panel .form-sub {
+    font-size: 14px; color: var(--tide-light); margin-bottom: 32px; line-height: 1.65;
+  }
+  .form-group { margin-bottom: 18px; }
+  .form-group label {
+    display: block; font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--tide-light); margin-bottom: 7px; font-weight: 400;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 13px 14px;
+    border: 1px solid var(--rule); border-radius: 0;
+    font-family: 'DM Sans', sans-serif; font-size: 14.5px; color: var(--ink);
+    background: var(--white); transition: border-color 0.2s;
+    outline: none; appearance: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--gold); background: var(--gold-light);
+  }
+  .form-group textarea { min-height: 90px; resize: vertical; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-panel .consent {
+    font-size: 12px; color: var(--mist); line-height: 1.6; margin: 18px 0 24px;
+  }
+  .btn-submit {
+    width: 100%; padding: 17px;
+    background: var(--gold); color: var(--white);
+    font-family: 'DM Sans', sans-serif; font-weight: 400;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    border: none; cursor: pointer; transition: background 0.3s;
+  }
+  .btn-submit:hover { background: var(--gold-pale); }
+
+  .success-msg {
+    display: none; text-align: center; padding: 40px 20px;
+  }
+  .success-msg .check {
+    width: 60px; height: 60px; background: var(--gold);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px; font-size: 24px; color: white;
+  }
+  .success-msg h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 400;
+    color: var(--ink); margin-bottom: 10px;
+  }
+  .success-msg p { color: var(--tide-light); font-size: 15px; line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 56px 80px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 24px;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; color: var(--gold); letter-spacing: 0.14em;
+  }
+  .footer-links { display: flex; gap: 32px; }
+  .footer-links a {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(239,237,232,0.45); text-decoration: none; transition: color 0.2s; font-weight: 400;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  footer p {
+    font-size: 11.5px; color: rgba(239,237,232,0.28);
+    width: 100%; line-height: 1.7;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeInUp 0.9s ease both; }
+  .fade-in-delay-1 { animation: fadeInUp 0.9s 0.2s ease both; }
+  .fade-in-delay-2 { animation: fadeInUp 0.9s 0.4s ease both; }
+
+  .reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .hero-content { padding: 120px 24px 72px; }
+    section { padding: 72px 24px; }
+    .value-strip { padding: 48px 24px; grid-template-columns: 1fr; gap: 40px; }
+    .value-strip-divider { display: none; }
+    .value-item { padding: 0; }
+    .advisor-grid { grid-template-columns: 1fr; }
+    .advisor-card:nth-child(3n) { border-right: 1px solid var(--rule); }
+    .advisor-card:nth-last-child(-n+3) { border-bottom: 1px solid var(--rule); }
+    .advisor-card:last-child { border-bottom: none; }
+    .how-inner { grid-template-columns: 1fr; gap: 48px; }
+    .outcome-grid { grid-template-columns: 1fr; }
+    .disclosure-note { padding: 48px 24px; }
+    .disclosure-note-inner { grid-template-columns: 1fr; gap: 16px; }
+    .referral-inner { grid-template-columns: 1fr; gap: 48px; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="index.html">KYMA<span>.</span></a>
+  <a class="cta-nav" href="#referral">Submit a Referral</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="grid-lines"></div>
+  <svg class="wave-overlay" viewBox="0 0 1440 220" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,110 C240,40 480,180 720,110 C960,40 1200,180 1440,110 L1440,220 L0,220 Z" fill="rgba(122,66,40,1)"/>
+    <path d="M0,140 C300,70 600,200 900,140 C1100,90 1300,180 1440,130 L1440,220 L0,220 Z" fill="rgba(122,66,40,0.5)"/>
+  </svg>
+  <div class="hero-content">
+    <div class="eyebrow fade-in">For Professional Advisors</div>
+    <h1 class="fade-in-delay-1">
+      Your clients own land.<br>We help them unlock<br><em>what it's truly worth.</em>
+    </h1>
+    <p class="hero-sub fade-in-delay-2">
+      Kyma Partners works with estate attorneys, CPAs, 1031 exchange specialists, rural wealth managers, and financial planners whose clients hold land that has never been optimized for its highest and best use. If you have a client sitting on idle acreage — agricultural, infill, or transitional — we'd like to have a conversation.
+    </p>
+  </div>
+</section>
+
+<!-- VALUE STRIP -->
+<div class="value-strip">
+  <div class="value-item reveal">
+    <div class="value-item-eyebrow">For Your Client</div>
+    <h3>Full development value — not raw land prices</h3>
+    <p>Kyma structures joint ventures that allow landowners to participate in the full economics of development: entitlement uplift, developer fees, promote, and permanent equity or a cash buyout at stabilization.</p>
+  </div>
+  <div class="value-strip-divider"></div>
+  <div class="value-item reveal">
+    <div class="value-item-eyebrow">For Your Practice</div>
+    <h3>A solution for the land problem you see repeatedly</h3>
+    <p>Estate plans, 1031 exchanges, and agricultural transitions often stall on idle land with no clear path forward. Kyma gives you a structured, professionally managed option to offer clients in that position.</p>
+  </div>
+  <div class="value-strip-divider"></div>
+  <div class="value-item reveal">
+    <div class="value-item-eyebrow">The Relationship</div>
+    <h3>Simple introduction. We handle everything after.</h3>
+    <p>You make the introduction. Kyma conducts a complimentary land assessment, presents findings to your client, and manages every phase of the engagement. Your client relationship remains yours.</p>
+  </div>
+</div>
+
+<!-- WHO THIS IS FOR -->
+<section class="who">
+  <div class="who-header reveal">
+    <div class="section-label">Who We Work With</div>
+    <h2>Five advisor profiles.<br>One common <em>client situation.</em></h2>
+    <p>The landowner who holds more value in dirt than in any financial account — and has no clear path to unlocking it without a forced sale. That client shows up across practices. Here is how Kyma fits each context.</p>
+  </div>
+
+  <div class="advisor-grid">
+    <div class="advisor-card reveal">
+      <span class="advisor-icon">⚖️</span>
+      <h3>Estate Attorneys</h3>
+      <p>You're structuring estates where raw land represents a significant but illiquid portion of the asset base. Heirs want income. The family doesn't want to sell. Kyma can convert that land into a professionally managed, income-producing equity interest — without a forced sale or partition action.</p>
+      <div class="trigger">
+        <strong>Refer when you see</strong>
+        Land held in trust or an estate with multiple beneficiaries, no clear disposition plan, or heirs seeking income without liquidation.
+      </div>
+    </div>
+    <div class="advisor-card reveal">
+      <span class="advisor-icon">📊</span>
+      <h3>CPAs & Tax Advisors</h3>
+      <p>Your client has held land for decades with a low basis and no income. A straight sale triggers significant capital gain. A Kyma joint venture — structured as a Section 721 contribution or timed with a 1031 exchange — may offer a path to deferred recognition, depreciation benefits during the hold, and capital gain treatment at exit.</p>
+      <div class="trigger">
+        <strong>Refer when you see</strong>
+        Low-basis land, reluctance to sell, interest in tax deferral, or clients asking about alternatives to an outright disposition.
+      </div>
+    </div>
+    <div class="advisor-card reveal">
+      <span class="advisor-icon">🔄</span>
+      <h3>1031 Exchange Specialists</h3>
+      <p>Your client has exchange proceeds and is looking for replacement property with genuine upside — not just a stabilized net lease at a compressed cap rate. A Kyma joint venture can serve as qualified replacement property, offering development-stage economics and long-term income rather than a fully-priced turn-key asset.</p>
+      <div class="trigger">
+        <strong>Refer when you see</strong>
+        Exchange proceeds in search of replacement property, clients frustrated with NNN pricing, or relinquished property from a land sale seeking like-kind reinvestment.
+      </div>
+    </div>
+    <div class="advisor-card reveal">
+      <span class="advisor-icon">🌾</span>
+      <h3>Rural Wealth Managers</h3>
+      <p>Your clients are agricultural landowners whose land is in the path of growth. Farming is less viable than it once was and the land is likely worth multiples of its agricultural value if properly entitled. Kyma helps them make that transition without surrendering the asset — or the relationship to it.</p>
+      <div class="trigger">
+        <strong>Refer when you see</strong>
+        Agricultural clients in suburban growth corridors, land that is leased but not farmed by the owner, or clients approaching retirement with land as their primary asset.
+      </div>
+    </div>
+    <div class="advisor-card reveal">
+      <span class="advisor-icon">📈</span>
+      <h3>Financial Planners</h3>
+      <p>Your client's net worth statement has a large line for real property — and almost none of it is generating income. They need cash flow but don't want to sell. Kyma can help convert idle land equity into quarterly distributions, estate-friendly ownership structures, and long-term wealth compounding.</p>
+      <div class="trigger">
+        <strong>Refer when you see</strong>
+        Concentrated, illiquid land positions, clients approaching retirement without sufficient income-producing assets, or estate planning conversations where land is the elephant in the room.
+      </div>
+    </div>
+    <div class="advisor-card reveal">
+      <span class="advisor-icon">🤝</span>
+      <h3>Not sure if your client qualifies?</h3>
+      <p>Kyma conducts a complimentary preliminary land assessment for any parcel referred by a professional advisor — no cost, no obligation, and no pressure on your client. If the land doesn't fit our model, we'll tell you plainly and explain why.</p>
+      <div class="trigger">
+        <strong>When in doubt</strong>
+        Submit the referral form below with basic parcel details. We'll review it within two business days and let you know if there's a fit worth exploring.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS FOR ADVISORS -->
+<section class="how">
+  <div class="how-inner">
+    <div class="how-left reveal">
+      <div class="section-label">The Kyma Model — Advisor Overview</div>
+      <h2>What actually happens<br>after you make the <em>introduction.</em></h2>
+      <p>
+        The Kyma joint venture model is designed to be explainable in one conversation. The landowner contributes their land at independently appraised market value. A professional developer contributes capital and construction guarantees. The landowner earns a share of fees and profit — and at stabilization, elects to hold permanent equity or receive a cash buyout.
+      </p>
+      <p>
+        Your client puts up no cash. Signs no construction loan guarantees. And never has to navigate the entitlement or development process on their own. That is the model in its simplest form.
+      </p>
+      <p>
+        The white paper — available for download on our homepage — covers every phase of the process in detail, including waterfall mechanics, tax considerations, and the stabilization election. It is written for sophisticated landowners and the advisors who serve them.
+      </p>
+    </div>
+    <div class="how-right reveal">
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-step-num">01</div>
+          <div class="how-step-content">
+            <h4>You Submit the Referral</h4>
+            <p>A simple form — client name, parcel location, approximate acreage, and any context you can share. That's all we need to get started.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">02</div>
+          <div class="how-step-content">
+            <h4>Kyma Conducts a Preliminary Assessment</h4>
+            <p>We review zoning, market conditions, infrastructure, and comparable land values to determine whether the parcel has development potential worth pursuing. This is complimentary and takes 3–5 business days.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">03</div>
+          <div class="how-step-content">
+            <h4>We Present Findings to Your Client</h4>
+            <p>If there is a viable path forward, we present a preliminary highest-and-best-use analysis directly to your client — with you included in the conversation as their trusted advisor.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">04</div>
+          <div class="how-step-content">
+            <h4>Your Client Decides — On Their Timeline</h4>
+            <p>There is no pressure and no deadline. If your client wants to explore a joint venture, we proceed to formal appraisal and term sheet. If not, there is no obligation and no cost to anyone.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">05</div>
+          <div class="how-step-content">
+            <h4>You Stay Involved Throughout</h4>
+            <p>Your client relationship remains yours. We coordinate with you on tax structure, estate considerations, and timing — and keep you informed at every major milestone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOUR CLIENT RECEIVES -->
+<section class="client-outcome">
+  <div class="outcome-header reveal">
+    <div class="section-label">Landowner Outcomes</div>
+    <h2>What your client receives<br>from a <em>Kyma joint venture.</em></h2>
+    <p>Two paths are available at stabilization. Both are structured around the same waterfall mechanics — the only difference is timing and form of payment.</p>
+  </div>
+  <div class="outcome-grid">
+    <div class="outcome-card reveal">
+      <h3>Path A — Permanent Equity</h3>
+      <p>Your client's profit share is crystallized into a defined ownership percentage of the stabilized, income-producing asset. They receive quarterly distributions from net operating income, participate in future appreciation, and can hold the asset indefinitely — including passing it to heirs.</p>
+      <ul>
+        <li>Quarterly cash distributions from stabilized NOI</li>
+        <li>Full participation in future asset appreciation</li>
+        <li>Estate-friendly structure — asset passes to heirs</li>
+        <li>Depreciation benefits shelter a portion of distributions</li>
+        <li>Professional asset management included</li>
+        <li>1031 exchange eligible upon future sale</li>
+      </ul>
+    </div>
+    <div class="outcome-card reveal">
+      <h3>Path B — Cash Buyout</h3>
+      <p>At stabilization, your client's interest is bought out at fair market value — funded from permanent loan proceeds, a sale to an institutional investor, or a secondary equity raise. The result is a lump-sum payment representing the full waterfall value of their interest.</p>
+      <ul>
+        <li>Lump-sum payment at peak asset value</li>
+        <li>Triggered by permanent refinancing or institutional sale</li>
+        <li>No capital at risk at any point during development</li>
+        <li>Proceeds available for estate distribution or reinvestment</li>
+        <li>Installment sale structuring available in some cases</li>
+        <li>Eligible to redeploy into a new Kyma joint venture</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- IMPORTANT DISCLOSURE FOR ADVISORS -->
+<div class="disclosure-note reveal">
+  <div class="disclosure-note-inner">
+    <div class="disclosure-note-label">A Note on Compensation</div>
+    <div class="disclosure-note-body">
+      <p>Kyma does not pay referral fees, finder's fees, or any percentage-based compensation to referring professionals. This policy is not a limitation — it is a deliberate legal and ethical choice. Kyma raises LP equity from accredited investors under Regulation D Rule 506(c) and relies on the issuer exemption under Rule 3a4-1. Paying third parties a percentage of capital raised would require those parties to be registered broker-dealers under FINRA.</p>
+      <p>If you refer a client to Kyma, you do so because it serves your client's interests — not because of any economic arrangement between Kyma and your firm. We believe that is the right foundation for a referral relationship, and we are transparent about it from the first conversation.</p>
+    </div>
+  </div>
+</div>
+
+<!-- REFERRAL FORM -->
+<section class="referral" id="referral">
+  <div class="referral-inner">
+    <div class="referral-left reveal">
+      <div class="section-label">Submit a Referral</div>
+      <h2>Make the introduction.<br><em>We take it from there.</em></h2>
+      <p>
+        Fill out the form with basic information about your client and their land. A Kyma principal will follow up within two business days to discuss whether there is a fit worth exploring — and to coordinate the appropriate next step with you.
+      </p>
+      <div class="what-happens">
+        <h4>What Happens After You Submit</h4>
+        <ul>
+          <li>Kyma reviews the parcel within 2 business days</li>
+          <li>We contact you — not your client — with our initial read</li>
+          <li>If there's a fit, we schedule a three-way introduction call</li>
+          <li>Preliminary land assessment delivered to your client at no cost</li>
+          <li>Your client decides whether to proceed — no pressure, no timeline</li>
+          <li>You remain involved and informed throughout the engagement</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="referral-right reveal">
+      <div class="form-panel" id="form-container">
+        <h3>Referral Introduction</h3>
+        <p class="form-sub">Tell us about yourself and your client's land. All information is held in strict confidence.</p>
+
+        <div id="referral-form">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="advisor-name" placeholder="Your full name" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Firm</label>
+              <input type="text" id="advisor-firm" placeholder="Firm name">
+            </div>
+            <div class="form-group">
+              <label>Your Role</label>
+              <select id="advisor-role">
+                <option value="">Select...</option>
+                <option>Estate Attorney</option>
+                <option>CPA / Tax Advisor</option>
+                <option>1031 Exchange Specialist</option>
+                <option>Rural Wealth Manager</option>
+                <option>Financial Planner</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Email</label>
+              <input type="email" id="advisor-email" placeholder="you@firm.com" required>
+            </div>
+            <div class="form-group">
+              <label>Your Phone</label>
+              <input type="tel" id="advisor-phone" placeholder="+1 (555) 000-0000">
+            </div>
+          </div>
+
+          <div style="height:1px; background:var(--rule); margin: 24px 0;"></div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Client's State</label>
+              <select id="client-state">
+                <option value="">Select a state...</option>
+                <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option>
+                <option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option>
+                <option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+                <option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option>
+                <option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option>
+                <option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+                <option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option>
+                <option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option>
+                <option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+                <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option>
+                <option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option>
+                <option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option>
+                <option>Wisconsin</option><option>Wyoming</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Approximate Acreage</label>
+              <select id="client-acreage">
+                <option value="">Select range...</option>
+                <option>Under 5 acres</option>
+                <option>5–20 acres</option>
+                <option>20–100 acres</option>
+                <option>100–500 acres</option>
+                <option>500+ acres</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Current Land Use</label>
+            <select id="client-use">
+              <option value="">Select...</option>
+              <option>Agricultural / Farmland</option>
+              <option>Vacant / Undeveloped</option>
+              <option>Residential (underutilized)</option>
+              <option>Commercial (underutilized)</option>
+              <option>Mixed / Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Brief Context (optional)</label>
+            <textarea id="client-notes" placeholder="Any relevant details — location, client situation, urgency, estate or tax considerations..."></textarea>
+          </div>
+
+          <p class="consent">By submitting, you confirm you have your client's consent to share basic parcel information with Kyma. We will contact you first before reaching out to your client directly. All information is held in strict confidence.</p>
+
+          <button class="btn-submit" onclick="handleReferral(event)">Submit Referral Introduction →</button>
+        </div>
+
+        <div class="success-msg" id="success-msg">
+          <div class="check">✓</div>
+          <h3>Referral received.</h3>
+          <p>A Kyma principal will review your submission and be in touch within two business days — with you first, before any contact with your client.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">KYMA.</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="index.html#capture">White Paper</a>
+    <a href="advisors.html">For Advisors</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+  <p>© 2025 Kyma Partners &nbsp;|&nbsp; kymapartners.co &nbsp;|&nbsp; This material is for informational purposes only and does not constitute an offer or solicitation to invest. Kyma does not pay referral fees or finder's fees to third parties. Past performance is not indicative of future results. All investments involve risk.</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(r => observer.observe(r));
+
+  function handleReferral(e) {
+    e.preventDefault();
+    const email = document.getElementById('advisor-email').value;
+    const name = document.getElementById('advisor-name').value;
+    if (!email || !name) { alert('Please enter your name and email address.'); return; }
+
+    const payload = {
+      advisorName: name,
+      advisorFirm: document.getElementById('advisor-firm').value,
+      advisorRole: document.getElementById('advisor-role').value,
+      advisorEmail: email,
+      advisorPhone: document.getElementById('advisor-phone').value,
+      clientState: document.getElementById('client-state').value,
+      clientAcreage: document.getElementById('client-acreage').value,
+      clientUse: document.getElementById('client-use').value,
+      clientNotes: document.getElementById('client-notes').value,
+      leadType: 'advisor-referral',
+      timestamp: new Date().toISOString(),
+      source: 'kyma-advisors-page'
+    };
+    console.log('Referral Payload:', payload);
+    document.getElementById('referral-form').style.display = 'none';
+    document.getElementById('success-msg').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

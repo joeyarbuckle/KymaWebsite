@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Kyma Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:        #2b2c33;
+    --bone:       #efede8;
+    --sand:       #e8e5de;
+    --tide:       #4e4b4a;
+    --tide-light: #797472;
+    --gold:       #7a4228;
+    --gold-pale:  #975835;
+    --gold-light: #f4e8e0;
+    --mist:       #8a8d99;
+    --white:      #f9f8f7;
+    --rule:       #dedad3;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 56px;
+    background: rgba(249,248,247,0.96);
+    border-bottom: 1px solid var(--rule);
+    backdrop-filter: blur(8px);
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 500; letter-spacing: 0.14em;
+    color: var(--gold); text-decoration: none;
+  }
+  .logo span { color: var(--tide-light); }
+  nav a.cta-nav {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--white); background: var(--gold);
+    padding: 11px 28px; text-decoration: none;
+    transition: background 0.3s;
+    font-family: 'DM Sans', sans-serif; font-weight: 400;
+  }
+  nav a.cta-nav:hover { background: var(--gold-pale); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 72vh;
+    position: relative;
+    display: flex; align-items: center;
+    overflow: hidden;
+    background: var(--bone);
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 80% at 100% 50%, rgba(151,88,53,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 0% 100%, rgba(151,88,53,0.05) 0%, transparent 50%),
+      linear-gradient(160deg, #f9f8f7 0%, #efede8 50%, #e8e5de 100%);
+  }
+
+  .grid-lines {
+    position: absolute; inset: 0; opacity: 0.06;
+    background-image:
+      linear-gradient(var(--tide) 1px, transparent 1px),
+      linear-gradient(90deg, var(--tide) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .wave-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 220px; opacity: 0.07;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 860px;
+    padding: 160px 80px 100px;
+  }
+
+  .eyebrow {
+    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 16px;
+    font-weight: 400;
+  }
+  .eyebrow::before {
+    content: ''; display: block; width: 36px; height: 1px; background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5.5vw, 72px);
+    font-weight: 300; line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+  h1 em { font-style: italic; color: var(--gold); }
+
+  .hero-sub {
+    font-size: 17px; line-height: 1.8; color: var(--tide);
+    max-width: 580px;
+    font-weight: 300;
+  }
+
+  /* ── CREDENTIALS STRIP ── */
+  .credentials {
+    background: var(--ink);
+    padding: 52px 80px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+  .credential { text-align: center; }
+  .credential-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; font-weight: 300; color: var(--bone);
+    line-height: 1;
+  }
+  .credential-label {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(239,237,232,0.55); margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 80px; }
+
+  .section-label {
+    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+    font-weight: 400;
+  }
+  .section-label::before { content: ''; width: 28px; height: 1px; background: var(--gold); display: block; }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300; line-height: 1.12;
+    color: var(--ink);
+  }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  /* ── PHILOSOPHY ── */
+  .philosophy {
+    background: var(--white);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .philosophy-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 88px;
+    align-items: start;
+  }
+
+  .philosophy-left h2 { margin-bottom: 28px; }
+
+  .philosophy-left p {
+    font-size: 15.5px; line-height: 1.9; color: var(--tide);
+    margin-bottom: 20px;
+  }
+
+  .philosophy-left p + p {
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .philosophy-right {
+    padding-top: 8px;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    border-left: 2px solid var(--gold);
+    padding: 32px 40px;
+    background: var(--bone);
+    margin-bottom: 32px;
+  }
+  .pull-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 300; font-style: italic;
+    line-height: 1.5; color: var(--ink);
+  }
+
+  /* Principle cards */
+  .principles {
+    border: 1px solid var(--rule);
+  }
+  .principle {
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.3s;
+  }
+  .principle:last-child { border-bottom: none; }
+  .principle:hover { background: var(--bone); }
+  .principle h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; font-weight: 500;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .principle p {
+    font-size: 14px; line-height: 1.75; color: var(--tide);
+  }
+
+  /* ── CAREER ── */
+  .career {
+    background: var(--bone);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .career-header { margin-bottom: 56px; max-width: 600px; }
+  .career-header p {
+    margin-top: 20px; font-size: 16px; line-height: 1.85; color: var(--tide);
+  }
+
+  .career-list {
+    border: 1px solid var(--rule);
+  }
+
+  .career-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 40px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--white);
+    transition: background 0.3s;
+  }
+  .career-row:last-child { border-bottom: none; }
+  .career-row:hover { background: var(--gold-light); }
+
+  .career-left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .career-period {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); font-weight: 400;
+    white-space: nowrap; min-width: 130px;
+  }
+
+  .career-firm {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400;
+    color: var(--ink);
+  }
+
+  .career-title {
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--tide-light); font-weight: 400;
+    text-align: right;
+  }
+
+  /* ── ASSET CLASSES ── */
+  .asset-classes {
+    background: var(--white);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .asset-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--rule);
+    margin-top: 56px;
+  }
+  .asset-card {
+    padding: 36px 32px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.3s;
+  }
+  .asset-card:nth-child(4n) { border-right: none; }
+  .asset-card:nth-last-child(-n+4) { border-bottom: none; }
+  .asset-card:hover { background: var(--bone); }
+  .asset-card::before {
+    content: ''; display: block;
+    width: 24px; height: 1px;
+    background: var(--gold);
+    margin-bottom: 16px;
+  }
+  .asset-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; font-weight: 400;
+    color: var(--ink); margin-bottom: 6px;
+  }
+  .asset-card p {
+    font-size: 12.5px; letter-spacing: 0.06em;
+    color: var(--tide-light); line-height: 1.6;
+    text-transform: uppercase;
+  }
+
+  /* ── EDUCATION ── */
+  .education {
+    background: var(--bone);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 56px;
+  }
+
+  .edu-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 44px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .edu-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(43,44,51,0.07); }
+  .edu-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: var(--gold);
+  }
+  .edu-card .degree {
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); font-weight: 400; margin-bottom: 14px;
+  }
+  .edu-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 400;
+    color: var(--ink); margin-bottom: 8px; line-height: 1.2;
+  }
+  .edu-card .field {
+    font-size: 14px; color: var(--tide); line-height: 1.6;
+    margin-bottom: 20px; padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .edu-card .detail {
+    font-size: 13px; color: var(--tide-light); line-height: 1.7;
+  }
+
+  /* ── FOUNDER DIVIDER ── */
+  .founder-divider {
+    background: var(--ink);
+    padding: 72px 80px;
+  }
+  .founder-divider-inner { max-width: 640px; }
+  .founder-divider .section-label { color: rgba(239,237,232,0.5); }
+  .founder-divider .section-label::before { background: rgba(239,237,232,0.3); }
+  .founder-divider h2 { color: var(--bone); }
+  .founder-divider h2 em { color: var(--gold-pale); }
+
+  /* ── FOUNDER SECTIONS ── */
+  .founder-section {
+    padding: 80px 80px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .founder-light { background: var(--white); border-top: 1px solid var(--rule); }
+  .founder-bone { background: var(--bone); }
+
+  .founder-header { margin-bottom: 48px; }
+
+  .founder-name-block { margin-bottom: 32px; }
+  .founder-tag {
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); font-weight: 400; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .founder-tag::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: block; }
+
+  .founder-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 300; line-height: 1.1;
+    color: var(--ink); margin-bottom: 10px;
+  }
+  .founder-title-line {
+    font-size: 13px; letter-spacing: 0.08em;
+    color: var(--tide-light); line-height: 1.6;
+  }
+
+  .founder-bio {
+    font-size: 15.5px; line-height: 1.9; color: var(--tide);
+    max-width: 760px; margin-bottom: 16px;
+  }
+
+  .founder-career { margin-bottom: 32px; }
+  .founder-edu { }
+
+  .founder-career-label {
+    font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--tide-light); font-weight: 400;
+    margin-bottom: 12px;
+  }
+
+  /* Placeholder styling */
+  .placeholder-note {
+    color: var(--mist) !important;
+    font-style: italic;
+    border-left: 2px solid var(--rule);
+    padding-left: 16px;
+    background: rgba(138,141,153,0.06);
+    padding: 12px 16px;
+  }
+  .placeholder-row .career-firm,
+  .placeholder-row .career-title,
+  .placeholder-row .career-period {
+    color: var(--mist) !important;
+    font-style: italic;
+  }
+  .placeholder-row { background: rgba(138,141,153,0.04); }
+  .cta-section {
+    background: var(--gold);
+    padding: 100px 80px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: 'KYMA';
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 260px; font-weight: 600;
+    color: rgba(255,255,255,0.06);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    white-space: nowrap; pointer-events: none;
+    letter-spacing: 0.05em;
+  }
+  .cta-section h2 {
+    color: var(--white);
+    margin-bottom: 20px;
+    position: relative; z-index: 1;
+  }
+  .cta-section h2 em { color: rgba(255,255,255,0.75); }
+  .cta-section p {
+    font-size: 16px; line-height: 1.8;
+    color: rgba(249,248,247,0.75);
+    max-width: 520px; margin: 0 auto 44px;
+    position: relative; z-index: 1;
+  }
+  .cta-actions {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    position: relative; z-index: 1;
+  }
+  .btn-white {
+    background: var(--white); color: var(--gold);
+    padding: 16px 36px;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s; font-family: 'DM Sans', sans-serif; font-weight: 400;
+    display: inline-block;
+  }
+  .btn-white:hover { background: var(--bone); transform: translateY(-1px); }
+  .btn-outline-white {
+    background: transparent; color: var(--white);
+    padding: 16px 36px;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    text-decoration: none; border: 1px solid rgba(255,255,255,0.45);
+    transition: all 0.3s; font-family: 'DM Sans', sans-serif; font-weight: 400;
+    display: inline-block;
+  }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.12); border-color: var(--white); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 56px 80px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 24px;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; color: var(--gold); letter-spacing: 0.14em;
+  }
+  .footer-links { display: flex; gap: 32px; }
+  .footer-links a {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(239,237,232,0.45); text-decoration: none; transition: color 0.2s;
+    font-weight: 400;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  footer p {
+    font-size: 11.5px; color: rgba(239,237,232,0.28);
+    width: 100%; line-height: 1.7;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in { animation: fadeInUp 0.9s ease both; }
+  .fade-in-delay-1 { animation: fadeInUp 0.9s 0.2s ease both; }
+  .fade-in-delay-2 { animation: fadeInUp 0.9s 0.4s ease both; }
+
+  .reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .hero-content { padding: 120px 24px 72px; }
+    .credentials { padding: 40px 24px; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    section { padding: 72px 24px; }
+    .philosophy-inner { grid-template-columns: 1fr; gap: 48px; }
+    .founder-section { padding: 64px 24px; }
+    .founder-divider { padding: 56px 24px; }
+    .career-row { flex-direction: column; align-items: flex-start; gap: 8px; padding: 24px; }
+    .career-left { flex-direction: column; gap: 4px; }
+    .career-title { text-align: left; }
+    .asset-grid { grid-template-columns: repeat(2, 1fr); }
+    .asset-card:nth-child(4n) { border-right: 1px solid var(--rule); }
+    .asset-card:nth-child(2n) { border-right: none; }
+    .asset-card:nth-last-child(-n+4) { border-bottom: 1px solid var(--rule); }
+    .asset-card:nth-last-child(-n+2) { border-bottom: none; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .cta-section { padding: 72px 24px; }
+    footer { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="index.html">KYMA<span>.</span></a>
+  <a class="cta-nav" href="index.html#capture">Request a Consultation</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="grid-lines"></div>
+
+  <svg class="wave-overlay" viewBox="0 0 1440 220" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,110 C240,40 480,180 720,110 C960,40 1200,180 1440,110 L1440,220 L0,220 Z" fill="rgba(122,66,40,1)"/>
+    <path d="M0,140 C300,70 600,200 900,140 C1100,90 1300,180 1440,130 L1440,220 L0,220 Z" fill="rgba(122,66,40,0.5)"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="eyebrow fade-in">The Principals Behind the Model</div>
+    <h1 class="fade-in-delay-1">
+      Capital, land, and engineering —<br><em>three disciplines. One firm.</em>
+    </h1>
+    <p class="hero-sub fade-in-delay-2">
+      Kyma Partners was founded by two principals whose careers cover opposite ends of the development equation: the financial structuring that makes a deal work, and the civil engineering and land planning that makes it buildable. Together, they represent every phase of the process — from raw land to stabilized cash flow.
+    </p>
+  </div>
+</section>
+
+<!-- CREDENTIALS STRIP -->
+<div class="credentials">
+  <div class="credential reveal">
+    <div class="credential-num">30+</div>
+    <div class="credential-label">Years of Real Estate Investment Experience — Joel Arbuckle</div>
+  </div>
+  <div class="credential reveal">
+    <div class="credential-num">25+</div>
+    <div class="credential-label">Years of Civil Engineering & Land Planning — Ryan Bogren, P.E.</div>
+  </div>
+  <div class="credential reveal">
+    <div class="credential-num">MBA + P.E.</div>
+    <div class="credential-label">Finance & Engineering Credentials Combined</div>
+  </div>
+  <div class="credential reveal">
+    <div class="credential-num">Principal</div>
+    <div class="credential-label">Co-Investors, Not Brokers or Agents</div>
+  </div>
+</div>
+
+<!-- FOUNDERS INTRO -->
+<section class="philosophy">
+  <div class="philosophy-inner">
+    <div class="philosophy-left reveal">
+      <div class="section-label">The Founding Philosophy</div>
+      <h2>Built for the<br>landowner's <em>side of the table.</em></h2>
+      <p>
+        Kyma Partners was founded on a straightforward conviction: landowners have been the least-compensated participants in the development equation for too long — contributing the most fundamental ingredient and receiving the smallest share of the value created.
+      </p>
+      <p>
+        The firm brings together two principals with complementary and deeply practical expertise: one who has spent three decades structuring real estate investment transactions across institutional and family office contexts, and one who has spent 25 years turning raw land into entitled, engineered, development-ready sites.
+      </p>
+      <p>
+        Kyma participates as a principal and co-investor in every transaction — not as a broker or intermediary. The firm's return depends on the same outcome as the landowner's: a successfully completed, cash-flowing asset.
+      </p>
+    </div>
+    <div class="philosophy-right reveal">
+      <div class="pull-quote">
+        <p>"The landowner has been the least-compensated participant in the development equation for too long — contributing the most fundamental ingredient and receiving the smallest share of the value created."</p>
+      </div>
+      <div class="principles">
+        <div class="principle">
+          <h4>Independence of Valuation</h4>
+          <p>Land is contributed at appraised market value established by an independent MAI-designated appraiser — not a number set by the developer.</p>
+        </div>
+        <div class="principle">
+          <h4>No Capital Required of the Landowner</h4>
+          <p>The landowner's contribution is the land itself. Kyma and its development partners provide all cash equity and carry all construction loan guarantees.</p>
+        </div>
+        <div class="principle">
+          <h4>Genuine Choice at the Finish Line</h4>
+          <p>At stabilization, the landowner elects their outcome — permanent equity with quarterly distributions, or a cash buyout. Both paths are structured to deliver fair market value.</p>
+        </div>
+        <div class="principle">
+          <h4>Alignment Through Co-Investment</h4>
+          <p>Kyma participates as a principal in each transaction. The firm's return depends on the same outcome as the landowner's — a successfully completed, cash-flowing asset.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER DIVIDER -->
+<div class="founder-divider">
+  <div class="founder-divider-inner">
+    <div class="section-label">The Principals</div>
+    <h2>Two careers. Every phase<br>of the development <em>equation covered.</em></h2>
+  </div>
+</div>
+
+<!-- JOEL ARBUCKLE -->
+<section class="founder-section founder-light">
+  <div class="founder-header reveal">
+    <div class="founder-name-block">
+      <div class="founder-tag">Investment & Capital Structure</div>
+      <h2 class="founder-name">Joel Arbuckle</h2>
+      <div class="founder-title-line">Co-Founder &nbsp;·&nbsp; MBA, Northwestern University — Kellogg</div>
+    </div>
+    <p class="founder-bio">
+      Joel brings nearly 30 years of institutional real estate investment experience spanning acquisitions, development, portfolio and asset management, equity joint ventures, dispositions, and structured finance across multiple sectors — multifamily, industrial, office, retail, storage, hospitality, and agriculture. His career has taken him from large national advisory firms to boutique operators and family office platforms, with a consistent focus on identifying sound investment opportunities and structuring transactions that create long-term value for all parties.
+    </p>
+    <p class="founder-bio">
+      At Kyma, Joel leads deal sourcing, joint venture structuring, LP capital formation, and investor relations. He participates in every transaction as a principal — not as a broker — ensuring his interests are directly aligned with those of the landowner.
+    </p>
+  </div>
+
+  <div class="founder-career reveal">
+    <div class="founder-career-label">Career</div>
+    <div class="career-list">
+      <div class="career-row">
+        <div class="career-left">
+          <span class="career-period">2017 — Present</span>
+          <span class="career-firm">Riverbend Management, Inc.</span>
+        </div>
+        <div class="career-title">Vice President</div>
+      </div>
+      <div class="career-row">
+        <div class="career-left">
+          <span class="career-period">2010 — 2017</span>
+          <span class="career-firm">Consolidated Investment Group</span>
+        </div>
+        <div class="career-title">Portfolio Manager</div>
+      </div>
+      <div class="career-row">
+        <div class="career-left">
+          <span class="career-period">2003 — 2010</span>
+          <span class="career-firm">American Realty Advisors</span>
+        </div>
+        <div class="career-title">Director</div>
+      </div>
+      <div class="career-row">
+        <div class="career-left">
+          <span class="career-period">1999 — 2003</span>
+          <span class="career-firm">Lincoln Property Company</span>
+        </div>
+        <div class="career-title">Asset Manager</div>
+      </div>
+      <div class="career-row">
+        <div class="career-left">
+          <span class="career-period">1997 — 1999</span>
+          <span class="career-firm">LaSalle Investment Management</span>
+        </div>
+        <div class="career-title">Financial Analyst</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="founder-edu reveal">
+    <div class="founder-career-label">Education</div>
+    <div class="career-list">
+      <div class="career-row">
+        <div class="career-left">
+          <span class="career-period">MBA</span>
+          <span class="career-firm">Northwestern University — Kellogg School of Management</span>
+        </div>
+        <div class="career-title">Finance · Marketing · Strategy</div>
+      </div>
+      <div class="career-row">
+        <div class="career-left">
+          <span class="career-period">B.S.</span>
+          <span class="career-firm">Brigham Young University</span>
+        </div>
+        <div class="career-title">Business Management · Finance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RYAN BOGREN -->
+<section class="founder-section founder-bone">
+  <div class="founder-header reveal">
+    <div class="founder-name-block">
+      <div class="founder-tag">Civil Engineering & Land Planning</div>
+      <h2 class="founder-name">Ryan Bogren, P.E.</h2>
+      <div class="founder-title-line">Co-Founder &nbsp;·&nbsp; Professional Engineer &nbsp;·&nbsp; B.S. Civil Engineering, Brigham Young University</div>
+    </div>
+    <p class="founder-bio">
+      Ryan is a licensed Professional Engineer with 25 years of experience specializing in land planning, entitlement, and civil engineering for land development projects. Where most real estate firms must outsource the technical feasibility of a site, Kyma has that expertise in-house — from the first site walk through final civil construction documents.
+    </p>
+    <p class="founder-bio placeholder-note">
+      ⚑ <em>Placeholder — Ryan to provide: a brief summary of career background, firm(s) worked with, notable project types or geographies, and any additional credentials or specializations he'd like highlighted.</em>
+    </p>
+    <p class="founder-bio">
+      At Kyma, Ryan leads highest-and-best-use feasibility assessment, entitlement strategy, civil due diligence, and engineering oversight across all active projects. His involvement from the earliest stages of site evaluation ensures that every project Kyma advances is not only financially sound — but physically and technically buildable.
+    </p>
+  </div>
+
+  <div class="founder-career reveal">
+    <div class="founder-career-label">Areas of Specialization</div>
+    <div class="career-list">
+      <div class="career-row">
+        <div class="career-left">
+          <span class="career-period">Primary</span>
+          <span class="career-firm">Land Planning & Entitlement</span>
+        </div>
+        <div class="career-title">Rezoning · Permitting · Regulatory Approvals</div>
+      </div>
+      <div class="career-row">
+        <div class="career-left">
+          <span class="career-period">Primary</span>
+          <span class="career-firm">Civil Engineering for Land Development</span>
+        </div>
+        <div class="career-title">Grading · Utilities · Infrastructure</div>
+      </div>
+      <div class="career-row placeholder-row">
+        <div class="career-left">
+          <span class="career-period">⚑ Add</span>
+          <span class="career-firm">[ Additional specialization or firm — placeholder ]</span>
+        </div>
+        <div class="career-title">[ Role or focus ]</div>
+      </div>
+      <div class="career-row placeholder-row">
+        <div class="career-left">
+          <span class="career-period">⚑ Add</span>
+          <span class="career-firm">[ Additional specialization or firm — placeholder ]</span>
+        </div>
+        <div class="career-title">[ Role or focus ]</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="founder-edu reveal">
+    <div class="founder-career-label">Education & Credentials</div>
+    <div class="career-list">
+      <div class="career-row">
+        <div class="career-left">
+          <span class="career-period">B.S.</span>
+          <span class="career-firm">Brigham Young University</span>
+        </div>
+        <div class="career-title">Civil Engineering</div>
+      </div>
+      <div class="career-row">
+        <div class="career-left">
+          <span class="career-period">License</span>
+          <span class="career-firm">Professional Engineer (P.E.)</span>
+        </div>
+        <div class="career-title placeholder-note">⚑ State(s) — placeholder</div>
+      </div>
+      <div class="career-row placeholder-row">
+        <div class="career-left">
+          <span class="career-period">⚑ Add</span>
+          <span class="career-firm">[ Additional credential or affiliation — placeholder ]</span>
+        </div>
+        <div class="career-title">[ Detail ]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASSET CLASSES -->
+<section class="asset-classes">
+  <div class="reveal">
+    <div class="section-label">Combined Sectors of Experience</div>
+    <h2>Investment and engineering expertise<br>across the full spectrum of <em>asset classes.</em></h2>
+  </div>
+
+  <div class="asset-grid">
+    <div class="asset-card reveal">
+      <h4>Multifamily</h4>
+      <p>Residential rental &amp; build-to-rent</p>
+    </div>
+    <div class="asset-card reveal">
+      <h4>Industrial</h4>
+      <p>Logistics, distribution &amp; flex</p>
+    </div>
+    <div class="asset-card reveal">
+      <h4>Mixed-Use</h4>
+      <p>Urban infill &amp; transit-oriented</p>
+    </div>
+    <div class="asset-card reveal">
+      <h4>Office</h4>
+      <p>CBD, suburban &amp; creative office</p>
+    </div>
+    <div class="asset-card reveal">
+      <h4>Retail</h4>
+      <p>Neighborhood, strip &amp; net lease</p>
+    </div>
+    <div class="asset-card reveal">
+      <h4>Hospitality</h4>
+      <p>Full-service, select-service &amp; resort</p>
+    </div>
+    <div class="asset-card reveal">
+      <h4>Storage</h4>
+      <p>Self-storage &amp; specialty storage</p>
+    </div>
+    <div class="asset-card reveal">
+      <h4>Agricultural</h4>
+      <p>Land transition &amp; conservation</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>The model is built.<br><em>Your land is the starting point.</em></h2>
+  <p>
+    Request a complimentary land assessment — a no-cost, no-obligation review of your parcel's highest and best use potential and a preliminary look at the economics of a Kyma joint venture.
+  </p>
+  <div class="cta-actions">
+    <a href="index.html#capture" class="btn-white">Request a Land Assessment</a>
+    <a href="index.html#capture" class="btn-outline-white">Download the White Paper</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">KYMA.</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="index.html#capture">White Paper</a>
+    <a href="index.html#capture">Contact</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+  <p>© 2025 Kyma Partners &nbsp;|&nbsp; kymapartners.co &nbsp;|&nbsp; This material is for informational purposes only and does not constitute an offer or solicitation to invest. Past performance is not indicative of future results. All investments involve risk.</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(r => observer.observe(r));
+</script>
+
+</body>
+</html>

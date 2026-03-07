@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kyma helps landowners unlock the highest and best use of their property — structuring development partnerships that generate durable net cash flows with $0 capital required from you.">
+<meta property="og:title" content="Kyma | Turn Your Land Into Lasting Legacy">
+<meta property="og:description" content="Unlock the wealth in your land. Kyma structures development partnerships that generate durable net cash flows — with no capital required from you.">
+<meta property="og:url" content="https://withkyma.com">
+<title>Kyma | Turn Your Land Into Lasting Legacy | withkyma.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:        #2b2c33;
+    --bone:       #efede8;
+    --sand:       #e8e5de;
+    --tide:       #4e4b4a;
+    --tide-light: #797472;
+    --gold:       #7a4228;
+    --gold-pale:  #975835;
+    --gold-light: #f4e8e0;
+    --mist:       #8a8d99;
+    --white:      #f9f8f7;
+    --rule:       #dedad3;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 56px;
+    background: rgba(249,248,247,0.96);
+    border-bottom: 1px solid var(--rule);
+    backdrop-filter: blur(8px);
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 500; letter-spacing: 0.14em;
+    color: var(--gold); text-decoration: none;
+    flex-shrink: 0;
+  }
+  .logo span { color: var(--tide-light); }
+  .nav-links {
+    display: flex; align-items: center; gap: 36px;
+  }
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 400;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--tide); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--gold); }
+  nav a.cta-nav {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--white); background: var(--gold);
+    padding: 11px 28px; text-decoration: none;
+    transition: background 0.3s;
+    font-family: 'DM Sans', sans-serif; font-weight: 400;
+    white-space: nowrap;
+  }
+  nav a.cta-nav:hover { background: var(--gold-pale); }
+  /* Mobile nav */
+  .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .nav-toggle span { display: block; width: 22px; height: 1.5px; background: var(--tide); transition: all 0.3s; }
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0;
+      background: rgba(249,248,247,0.98); border-bottom: 1px solid var(--rule);
+      flex-direction: column; align-items: flex-start; gap: 0; padding: 8px 0; }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 14px 24px; width: 100%; border-bottom: 1px solid var(--rule); }
+    .nav-links a:last-child { border-bottom: none; }
+    .nav-toggle { display: flex; }
+    nav a.cta-nav { display: none; }
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex; align-items: center;
+    overflow: hidden;
+    background: var(--bone);
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 80% at 100% 50%, rgba(151,88,53,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 0% 100%, rgba(151,88,53,0.05) 0%, transparent 50%),
+      linear-gradient(160deg, #f9f8f7 0%, #efede8 50%, #e8e5de 100%);
+  }
+
+  /* Subtle topographic line pattern */
+  .grid-lines {
+    position: absolute; inset: 0; opacity: 0.06;
+    background-image:
+      linear-gradient(var(--tide) 1px, transparent 1px),
+      linear-gradient(90deg, var(--tide) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  /* Animated wave SVG at bottom of hero */
+  .wave-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 220px; opacity: 0.07;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 800px;
+    padding: 140px 80px 80px;
+  }
+
+  .eyebrow {
+    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 16px;
+    font-weight: 400;
+  }
+  .eyebrow::before {
+    content: ''; display: block; width: 36px; height: 1px; background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(46px, 6.5vw, 84px);
+    font-weight: 300; line-height: 1.06;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+  h1 em {
+    font-style: italic; color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 17px; line-height: 1.75; color: var(--tide);
+    max-width: 520px; margin-bottom: 52px;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold); color: var(--white);
+    padding: 16px 36px;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: all 0.3s; font-family: 'DM Sans', sans-serif; font-weight: 400;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-pale); transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: var(--sand); color: var(--ink);
+    padding: 16px 36px;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    text-decoration: none; border: 1px solid var(--tide); cursor: pointer;
+    transition: all 0.3s; font-family: 'DM Sans', sans-serif; font-weight: 400;
+    display: inline-block;
+  }
+  .btn-ghost:hover { background: var(--tide); border-color: var(--tide); color: var(--white); }
+
+  /* Scroll indicator */
+  .scroll-hint {
+    position: absolute; bottom: 40px; left: 80px;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--tide-light); display: flex; align-items: center; gap: 12px;
+    animation: fadeInUp 1s 1.5s both;
+  }
+  .scroll-hint::after {
+    content: ''; display: block; width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--tide-light), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  /* ── METRICS STRIP ── */
+  /* Dark band — the one deliberate dark element, like Terra Vista's accent strips */
+  .metrics {
+    background: var(--ink);
+    padding: 56px 80px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    position: relative;
+  }
+  .metric { text-align: center; }
+  .metric-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px; font-weight: 300; color: var(--bone);
+    line-height: 1;
+  }
+  .metric-label {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(239,237,232,0.55); margin-top: 8px;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 112px 80px; }
+
+  .section-label {
+    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+    font-weight: 400;
+  }
+  .section-label::before { content: ''; width: 28px; height: 1px; background: var(--gold); display: block; }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 4.5vw, 56px);
+    font-weight: 300; line-height: 1.12;
+    color: var(--ink);
+  }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  /* ── HOW IT WORKS ── */
+  .how {
+    background: var(--white);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .how-header { max-width: 600px; margin-bottom: 72px; }
+  .how-header p {
+    margin-top: 24px; font-size: 16px; line-height: 1.85;
+    color: var(--tide);
+  }
+
+  .steps {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule);
+    margin-bottom: 0;
+  }
+  .step {
+    padding: 48px 40px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    transition: background 0.3s;
+    background: var(--white);
+  }
+  .step:nth-child(3n) { border-right: none; }
+  .step:nth-last-child(-n+3) { border-bottom: none; }
+  .step:hover { background: var(--bone); }
+  .step::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: transparent;
+    transition: background 0.3s;
+  }
+  .step:hover::before { background: var(--gold); }
+
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px; font-weight: 300;
+    color: rgba(122,66,40,0.42); line-height: 1;
+    margin-bottom: 20px;
+  }
+  .step h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 400; color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .step p { font-size: 14.5px; line-height: 1.8; color: var(--tide); }
+
+  /* ── STRUCTURE / HOW YOU WIN ── */
+  .structure {
+    background: var(--bone);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .options-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+    margin-top: 56px;
+  }
+  .option-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 48px 44px;
+    position: relative; overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .option-card:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(43,44,51,0.08); }
+  .option-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+  .option-card.hold::before { background: var(--tide); }
+  .option-card.exit::before { background: var(--gold); }
+  .option-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 400;
+    color: var(--ink); margin-bottom: 12px;
+  }
+  .option-card .tag {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 20px; display: inline-block; padding: 4px 12px;
+    font-weight: 400;
+  }
+  .option-card.hold .tag { background: rgba(78,75,74,0.08); color: var(--tide); }
+  .option-card.exit .tag { background: rgba(122,66,40,0.09); color: var(--gold); }
+  .option-card p { font-size: 14.5px; line-height: 1.85; color: var(--tide); }
+  .option-card ul { list-style: none; margin-top: 20px; }
+  .option-card ul li {
+    font-size: 14px; color: var(--tide); padding: 9px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .option-card ul li:last-child { border-bottom: none; }
+  .option-card ul li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
+
+  /* ── WHO WE SERVE ── */
+  .who {
+    background: var(--white);
+    border-top: 1px solid var(--rule);
+  }
+  .who-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    border: 1px solid var(--rule);
+    margin-top: 56px;
+  }
+  .who-card {
+    padding: 44px 40px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.3s;
+  }
+  .who-card:nth-child(2n) { border-right: none; }
+  .who-card:nth-last-child(-n+2) { border-bottom: none; }
+  .who-card:hover { background: var(--bone); }
+  .who-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400; color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .who-card p { font-size: 14px; line-height: 1.8; color: var(--tide); }
+
+  /* ── TESTIMONIAL ── */
+  /* Sienna accent band — like Terra Vista's warm image+quote sections */
+  .testimonial {
+    background: var(--gold);
+    padding: 100px 80px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .testimonial::before {
+    content: '\201C';
+    position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 200px; line-height: 1;
+    color: rgba(255,255,255,0.10);
+    pointer-events: none;
+  }
+  .testimonial blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 38px);
+    font-weight: 300; font-style: italic;
+    line-height: 1.45; color: var(--white);
+    max-width: 760px; margin: 0 auto 36px;
+    position: relative; z-index: 1;
+  }
+  .testimonial cite {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(249,248,247,0.65);
+    font-style: normal; position: relative; z-index: 1;
+    font-weight: 400;
+  }
+
+  /* ── LEAD CAPTURE ── */
+  .capture {
+    background: var(--bone);
+    border-top: 1px solid var(--rule);
+    position: relative; overflow: hidden;
+  }
+  .capture::before {
+    content: 'KYMA';
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 260px; font-weight: 600;
+    color: rgba(122,66,40,0.04);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    white-space: nowrap; pointer-events: none;
+    letter-spacing: 0.05em;
+  }
+  .capture-inner {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 88px;
+    align-items: start;
+  }
+  .capture-left h2 { margin-bottom: 20px; }
+  .capture-left p {
+    font-size: 16px; line-height: 1.85; color: var(--tide); margin-bottom: 36px;
+  }
+  .whitepaper-preview {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--gold);
+    padding: 28px 32px;
+    margin-top: 0;
+  }
+  .whitepaper-preview h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 400; color: var(--ink); margin-bottom: 16px;
+  }
+  .whitepaper-preview ul { list-style: none; }
+  .whitepaper-preview ul li {
+    font-size: 13px; color: var(--tide); padding: 6px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex; gap: 10px; line-height: 1.6;
+  }
+  .whitepaper-preview ul li:last-child { border-bottom: none; }
+  .whitepaper-preview ul li::before { content: '✦'; color: var(--gold); font-size: 8px; margin-top: 4px; flex-shrink: 0; }
+
+  /* Form panel */
+  .form-panel {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 52px 48px;
+    color: var(--ink);
+  }
+  .form-panel h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px; font-weight: 400;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .form-panel .form-sub {
+    font-size: 14px; color: var(--tide-light); margin-bottom: 32px;
+    line-height: 1.65;
+  }
+
+  .form-group { margin-bottom: 18px; }
+  .form-group label {
+    display: block; font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--tide-light); margin-bottom: 7px;
+    font-weight: 400;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 13px 14px;
+    border: 1px solid var(--rule); border-radius: 0;
+    font-family: 'DM Sans', sans-serif; font-size: 14.5px; color: var(--ink);
+    background: var(--white);
+    transition: border-color 0.2s;
+    outline: none; appearance: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--gold);
+    background: var(--gold-light);
+  }
+  .form-group textarea { min-height: 80px; resize: vertical; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .form-panel .consent {
+    font-size: 12px; color: var(--mist); line-height: 1.6; margin: 18px 0 24px;
+  }
+
+  .btn-submit {
+    width: 100%; padding: 17px;
+    background: var(--gold); color: var(--white);
+    font-family: 'DM Sans', sans-serif; font-weight: 400;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    border: none; cursor: pointer;
+    transition: background 0.3s;
+  }
+  .btn-submit:hover { background: var(--gold-pale); }
+
+  .form-divider {
+    text-align: center; margin: 16px 0;
+    font-size: 10px; color: var(--mist); letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .btn-consult {
+    width: 100%; padding: 15px;
+    background: var(--sand); color: var(--tide);
+    font-family: 'DM Sans', sans-serif; font-weight: 400;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    border: 1px solid var(--rule); cursor: pointer;
+    transition: all 0.3s;
+  }
+  .btn-consult:hover { background: var(--tide); color: var(--white); border-color: var(--tide); }
+
+  .success-msg {
+    display: none; text-align: center; padding: 40px 20px;
+  }
+  .success-msg .check {
+    width: 60px; height: 60px; background: var(--gold);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px; font-size: 24px; color: white;
+  }
+  .success-msg h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 400;
+    color: var(--ink); margin-bottom: 10px;
+  }
+  .success-msg p { color: var(--tide-light); font-size: 15px; line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 56px 80px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 24px;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; color: var(--gold); letter-spacing: 0.14em;
+  }
+  .footer-links { display: flex; gap: 32px; }
+  .footer-links a {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(239,237,232,0.45); text-decoration: none; transition: color 0.2s;
+    font-weight: 400;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  footer p {
+    font-size: 11.5px; color: rgba(239,237,232,0.28);
+    width: 100%; line-height: 1.7;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes waveFloat {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-20px); }
+  }
+
+  .fade-in { animation: fadeInUp 0.9s ease both; }
+  .fade-in-delay-1 { animation: fadeInUp 0.9s 0.2s ease both; }
+  .fade-in-delay-2 { animation: fadeInUp 0.9s 0.4s ease both; }
+  .fade-in-delay-3 { animation: fadeInUp 0.9s 0.6s ease both; }
+
+  .reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Wave animation */
+  .animated-wave path {
+    animation: waveFloat 6s ease-in-out infinite;
+  }
+
+  /* ── ETYMOLOGY ── */
+  .etymology {
+    background: var(--white);
+    border-bottom: 1px solid var(--rule);
+    padding: 88px 80px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .etymology-greek {
+    text-align: center;
+    position: relative;
+  }
+  .etymology-glyph {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 148px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--gold);
+    opacity: 0.18;
+    letter-spacing: -0.02em;
+    display: block;
+    user-select: none;
+  }
+  .etymology-transliteration {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--gold);
+    letter-spacing: 0.18em;
+    display: block;
+    margin-top: -24px;
+    position: relative;
+    z-index: 1;
+  }
+  .etymology-pronunciation {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--tide-light);
+    letter-spacing: 0.14em;
+    margin-top: 10px;
+    display: block;
+  }
+  .etymology-pos {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--mist);
+    letter-spacing: 0.06em;
+    margin-top: 6px;
+    display: block;
+  }
+
+  .etymology-rule {
+    width: 1px;
+    height: 100%;
+    background: var(--rule);
+    position: absolute;
+    left: calc(33.33% + 0px);
+    top: 0;
+  }
+
+  .etymology-right {
+    position: relative;
+  }
+  .etymology-definition {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1.45;
+    color: var(--ink);
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+  .etymology-definition strong {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--gold);
+  }
+  .etymology-body {
+    font-size: 15.5px;
+    line-height: 1.85;
+    color: var(--tide);
+    margin-bottom: 20px;
+  }
+  .etymology-body + .etymology-body {
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+  .etymology-origin {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  .etymology-origin-label {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+    padding-top: 3px;
+    white-space: nowrap;
+  }
+  .etymology-origin-text {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--tide-light);
+  }
+
+  .etymology-phases {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--rule);
+    margin: 24px 0;
+  }
+  .etymology-phase {
+    padding: 28px 28px;
+    border-right: 1px solid var(--rule);
+  }
+  .etymology-phase:last-child { border-right: none; }
+  .etymology-phase-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: var(--gold);
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .etymology-phase-body {
+    font-size: 14px;
+    line-height: 1.82;
+    color: var(--tide);
+  }
+
+  @media (max-width: 900px) {
+    .etymology-phases { grid-template-columns: 1fr; }
+    .etymology-phase { border-right: none; border-bottom: 1px solid var(--rule); }
+    .etymology-phase:last-child { border-bottom: none; }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    .etymology {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 64px 24px;
+    }
+    .etymology-glyph { font-size: 100px; }
+    .etymology-transliteration { font-size: 40px; }
+  }
+    nav { padding: 18px 24px; }
+    .hero-content { padding: 110px 24px 60px; }
+    .metrics { padding: 40px 24px; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    section { padding: 72px 24px; }
+    .steps { grid-template-columns: 1fr; }
+    .step:nth-child(3n) { border-right: 1px solid var(--rule); }
+    .step:nth-last-child(-n+3) { border-bottom: 1px solid var(--rule); }
+    .step:last-child { border-bottom: none; }
+    .options-grid { grid-template-columns: 1fr; }
+    .who-grid { grid-template-columns: 1fr; }
+    .who-card:nth-child(2n) { border-right: 1px solid var(--rule); }
+    .who-card:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
+    .who-card:last-child { border-bottom: none; }
+    .capture-inner { grid-template-columns: 1fr; gap: 48px; }
+    footer { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
+    .testimonial { padding: 72px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="index.html">KYMA<span>.</span></a>
+  <div class="nav-links" id="nav-links">
+    <a href="kyma-how-it-works.html">How It Works</a>
+    <a href="kyma-about.html">About</a>
+    <a href="kyma-resources.html">Resources</a>
+    <a href="kyma-advisors.html">For Advisors</a>
+    <a href="kyma-contact.html">Contact</a>
+  </div>
+  <a class="cta-nav" href="#capture">Request a Land Assessment</a>
+  <div class="nav-toggle" id="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="grid-lines"></div>
+
+  <svg class="wave-overlay animated-wave" viewBox="0 0 1440 220" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,110 C240,40 480,180 720,110 C960,40 1200,180 1440,110 L1440,220 L0,220 Z" fill="rgba(122,66,40,1)"/>
+    <path d="M0,140 C300,70 600,200 900,140 C1100,90 1300,180 1440,130 L1440,220 L0,220 Z" fill="rgba(122,66,40,0.5)"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="eyebrow fade-in">Land Development Advisory</div>
+    <h1 class="fade-in-delay-1">
+      Your land holds<br><em>a wave of wealth</em><br>waiting to flow.
+    </h1>
+    <p class="hero-sub fade-in-delay-2">
+      Kyma helps landowners unlock the highest and best use of their property — then structures a development partnership that generates durable net cash flows for you and your heirs, without risking a dollar of your own capital.
+    </p>
+    <div class="hero-actions fade-in-delay-3">
+      <a href="#capture" class="btn-primary">Get the Free White Paper</a>
+      <a href="#capture" class="btn-ghost">Request a Consultation</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">Discover the model</div>
+</section>
+
+
+<!-- ETYMOLOGY -->
+<section class="etymology reveal">
+  <div class="etymology-greek">
+    <span class="etymology-glyph">κῦμα</span>
+    <span class="etymology-transliteration">KYMA</span>
+    <span class="etymology-pronunciation">/ ˈkiː.mɑ /</span>
+    <span class="etymology-pos">noun, Ancient Greek</span>
+  </div>
+
+  <div class="etymology-right">
+    <p class="etymology-definition">
+      <strong>"A wave."</strong> The swell of water that builds from below the surface, rises to its full height, and breaks into motion — releasing energy that was always there, waiting.
+    </p>
+    <p class="etymology-body">
+      In ancient Greek, κῦμα described not just the surface movement of water, but the entire cycle of accumulation and release — the gathering of potential energy beneath calm water, the rise, and the forward flow that follows. It was also used to describe the swelling of a tide: the gradual, unstoppable movement of something larger than any single moment.
+    </p>
+
+    <div class="etymology-phases">
+      <div class="etymology-phase">
+        <div class="etymology-phase-label">The First Wave &nbsp;·&nbsp; Development</div>
+        <p class="etymology-phase-body">
+          Landowners often hold property for decades — patient, waiting, sensing that the land is worth more than the market currently reflects. That patience is not inertia. It is potential energy, accumulating quietly beneath the surface. Entitlement, joint venture structuring, and construction are the forces that let it rise. When the asset stabilizes, that energy breaks — and years of compressed value release in a single, powerful event.
+        </p>
+      </div>
+      <div class="etymology-phase">
+        <div class="etymology-phase-label">The Ocean That Follows &nbsp;·&nbsp; Income</div>
+        <p class="etymology-phase-body">
+          But the sea does not stop after a single wave. Once the asset is developed and stabilized — tenanted, refinanced, professionally managed — it enters a different rhythm entirely. Not one wave, but many: quarterly distributions arriving with the reliability of tides, compounding over years, flowing to you and ultimately to your heirs. Durable. Perpetual. The kind of income that outlasts the transaction that created it.
+        </p>
+      </div>
+    </div>
+
+    <p class="etymology-body" style="margin-top: 24px;">
+      Kyma is the partner for both phases. We help landowners recognize the moment their first wave has arrived — and we build the structure that keeps the ocean flowing long after it breaks.
+    </p>
+
+    <div class="etymology-origin">
+      <span class="etymology-origin-label">Origin</span>
+      <span class="etymology-origin-text">
+        Ancient Greek κῦμα (kŷma) — from κύειν (kýein), "to be pregnant, to swell." Related to κυματίζω, "to rise in waves." The root appears in English in <em>cymatics</em> (the study of wave phenomena) and <em>cyma</em> (an architectural wave molding found in classical cornices). The word has been in continuous use since Homer.
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+
+<div class="metrics">
+  <div class="metric reveal">
+    <div class="metric-num">$0</div>
+    <div class="metric-label">Capital Required From You</div>
+  </div>
+  <div class="metric reveal">
+    <div class="metric-num">3×</div>
+    <div class="metric-label">Typical Value Uplift vs. Raw Land Sale</div>
+  </div>
+  <div class="metric reveal">
+    <div class="metric-num">100%</div>
+    <div class="metric-label">Construction Guarantees by Developer</div>
+  </div>
+  <div class="metric reveal">
+    <div class="metric-num">∞</div>
+    <div class="metric-label">Generational Legacy Potential</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="how-header reveal">
+    <div class="section-label">The Kyma Model</div>
+    <h2>Six steps from <em>idle land</em><br>to perpetual income.</h2>
+    <p>We orchestrate every phase — from highest-and-best-use analysis through entitlement, construction, lease-up, and long-term hold — so you never have to navigate the development world alone.</p>
+  </div>
+
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <h3>Discovery &amp; Assessment</h3>
+      <p>We evaluate your land's potential through market analysis, zoning review, and site due diligence to identify its highest and best use — whether multifamily, mixed-use, industrial, or hospitality.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">02</div>
+      <h3>Entitlement Strategy</h3>
+      <p>Our team guides the entitlement process — rezoning, permitting, and regulatory approvals — dramatically increasing land value before a single shovel breaks ground.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">03</div>
+      <h3>Developer Matchmaking</h3>
+      <p>Kyma brings first-class, institutional-grade developers to the table. You contribute the land. They contribute capital, guarantees, and execution expertise.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">04</div>
+      <h3>Joint Venture Structuring</h3>
+      <p>We negotiate a joint venture where your land equity converts to a defined profit-share percentage in the completed project — including developer fees and promote income during lease-up.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">05</div>
+      <h3>Construction &amp; Lease-Up</h3>
+      <p>The developer executes construction and stabilizes the property. They carry all loan guarantees and execution risk. You participate in the economics from day one.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">06</div>
+      <h3>Your Choice: Hold or Exit</h3>
+      <p>At stabilization, you decide: crystallize your profit share into permanent equity for long-term cash flow, or be bought out at fair market value upon refinance or sale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STRUCTURE / OPTIONS -->
+<section class="structure">
+  <div class="section-label">Landowner Outcomes</div>
+  <h2>Two paths. Both <em>in your favor.</em></h2>
+
+  <div class="options-grid">
+    <div class="option-card hold reveal">
+      <span class="tag">Long-Term Wealth</span>
+      <h3>Crystallize Into Equity</h3>
+      <p>Convert your profit-share percentage into permanent ownership equity in the stabilized asset. Collect proportional distributions, benefit from appreciation, and pass a cash-flowing property to your heirs.</p>
+      <ul>
+        <li>Ongoing quarterly cash distributions</li>
+        <li>Long-term asset appreciation</li>
+        <li>Estate planning &amp; generational transfer</li>
+        <li>Professional asset management included</li>
+        <li>1031 exchange eligible upon future sale</li>
+      </ul>
+    </div>
+    <div class="option-card exit reveal">
+      <span class="tag">Liquidity Event</span>
+      <h3>Cash Out at Stabilization</h3>
+      <p>When the project refinances with a permanent loan or is sold to a long-term investor, your profit share is redeemed at fair market value — turning raw land into a significant lump-sum payout.</p>
+      <ul>
+        <li>Lump-sum buyout at peak asset value</li>
+        <li>Triggered by refi or institutional sale</li>
+        <li>No capital at risk during construction</li>
+        <li>Structured for tax efficiency</li>
+        <li>Opportunity to redeploy into next Kyma deal</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section class="who">
+  <div class="section-label">Who This Is For</div>
+  <h2>Landowners with vision,<br>not just <em>acreage.</em></h2>
+  <div class="who-grid">
+    <div class="who-card reveal">
+      <h4>Generational Family Land</h4>
+      <p>You inherited land that has sat idle for decades. You want it to generate income without a forced sale, and you want your children to inherit an asset — not a tax problem.</p>
+    </div>
+    <div class="who-card reveal">
+      <h4>Agricultural Landowners</h4>
+      <p>Farmland in the path of growth. You're ready to transition from crops to cash flows, but you don't want to sell outright at a fraction of its development potential.</p>
+    </div>
+    <div class="who-card reveal">
+      <h4>Infill &amp; Urban Parcels</h4>
+      <p>You own a lot or underutilized parcel in a high-demand area. You know it's worth far more developed, but you lack the capital, expertise, or relationships to execute.</p>
+    </div>
+    <div class="who-card reveal">
+      <h4>Estate &amp; Trust Landholdings</h4>
+      <p>Land held in trust or an estate with multiple beneficiaries. Kyma can structure equitable solutions that generate ongoing income for all stakeholders without forced liquidation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<div class="testimonial">
+  <blockquote>
+    "I'd held that land for twenty years waiting for the right moment. Kyma showed me the moment had already arrived — I just didn't have the right partner to unlock it."
+  </blockquote>
+  <cite>— Prospective outcome, illustrative of the Kyma model</cite>
+</div>
+
+<!-- LEAD CAPTURE -->
+<section class="capture" id="capture">
+  <div class="capture-inner">
+    <div class="capture-left reveal">
+      <div class="section-label">Free Resources</div>
+      <h2>Start with the<br><em>white paper.</em></h2>
+      <p>
+        Download our guide: <strong style="color:var(--gold)">"The Landowner's Blueprint: How to Turn Idle Land Into Durable Net Cash Flows"</strong> — and optionally request a private 30-minute consultation with a Kyma advisor.
+      </p>
+      <div class="whitepaper-preview">
+        <h4>White Paper Contents Include:</h4>
+        <ul>
+          <li>How highest-and-best-use analysis works — and how to request one</li>
+          <li>What the entitlement process looks like and who bears the cost</li>
+          <li>How joint ventures are structured between landowners and developers</li>
+          <li>The difference between fee income, promote, and equity — and what you're entitled to</li>
+          <li>How to evaluate hold vs. exit scenarios for maximum after-tax wealth</li>
+          <li>Real project timelines: from raw land to stabilized cash flow</li>
+          <li>Estate planning considerations for landowners with heirs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="capture-right reveal">
+      <div class="form-panel" id="form-container">
+        <h3>Unlock Your Land's Potential</h3>
+        <p class="form-sub">Enter your details to receive the white paper instantly and optionally request a private consultation.</p>
+
+        <div id="lead-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" placeholder="James" required>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" placeholder="Harrington" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="james@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="+1 (555) 000-0000">
+          </div>
+          <div class="form-group">
+            <label for="state">State Where Land is Located</label>
+            <select id="state">
+              <option value="">Select a state...</option>
+              <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option>
+              <option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option>
+              <option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+              <option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option>
+              <option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option>
+              <option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+              <option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option>
+              <option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option>
+              <option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+              <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option>
+              <option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option>
+              <option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option>
+              <option>Wisconsin</option><option>Wyoming</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="acreage">Approximate Acreage</label>
+            <select id="acreage">
+              <option value="">Select range...</option>
+              <option>Under 5 acres</option>
+              <option>5–20 acres</option>
+              <option>20–100 acres</option>
+              <option>100–500 acres</option>
+              <option>500+ acres</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="notes">Tell us briefly about your land (optional)</label>
+            <textarea id="notes" placeholder="Location, current use, any plans you've considered..."></textarea>
+          </div>
+
+          <p class="consent">By submitting, you agree to receive the Kyma white paper and may be contacted by a Kyma advisor. We respect your privacy and never sell your information.</p>
+
+          <button class="btn-submit" onclick="handleSubmit(event)">Download the White Paper →</button>
+          <div class="form-divider">or</div>
+          <button class="btn-consult" onclick="handleConsult(event)">Request a Private Consultation</button>
+        </div>
+
+        <div class="success-msg" id="success-msg">
+          <div class="check">✓</div>
+          <h3>You're on the wave.</h3>
+          <p>Your white paper is on its way to your inbox. A Kyma advisor will be in touch within one business day to discuss your land's potential.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">KYMA.</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="kyma-how-it-works.html">How It Works</a>
+    <a href="kyma-about.html">About</a>
+    <a href="kyma-resources.html">Resources</a>
+    <a href="kyma-advisors.html">For Advisors</a>
+    <a href="kyma-contact.html">Contact</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+  <p>© 2025 Kyma &nbsp;|&nbsp; withkyma.com &nbsp;|&nbsp; This material is for informational purposes only and does not constitute an offer or solicitation to invest. Past performance is not indicative of future results. All investments involve risk.</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(r => observer.observe(r));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    if (!email) { alert('Please enter your email address.'); return; }
+    submitForm('whitepaper');
+  }
+
+  function handleConsult(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    if (!email) { alert('Please enter your email address first.'); return; }
+    submitForm('consultation');
+  }
+
+  function submitForm(type) {
+    const payload = {
+      firstName: document.getElementById('fname').value,
+      lastName: document.getElementById('lname').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      state: document.getElementById('state').value,
+      acreage: document.getElementById('acreage').value,
+      notes: document.getElementById('notes').value,
+      leadType: type,
+      timestamp: new Date().toISOString(),
+      source: 'kyma-landing-page'
+    };
+    console.log('CRM Payload:', payload);
+    document.getElementById('lead-form').style.display = 'none';
+    document.getElementById('success-msg').style.display = 'block';
+  }
+
+  document.querySelectorAll('a[href="#capture"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById('capture').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
