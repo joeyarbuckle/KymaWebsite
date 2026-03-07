@@ -7,6 +7,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+<!-- HubSpot Form Embed -->
+<script src="https://js-na2.hsforms.net/forms/embed/245466190.js" defer></script>
+
 <style>
   :root {
     --ink:        #2b2c33;
@@ -171,7 +175,7 @@
   .expect-block ul li:last-child { border-bottom: none; }
   .expect-block ul li::before { content: '✦'; color: var(--gold); font-size: 8px; margin-top: 4px; flex-shrink: 0; }
 
-  /* FORM */
+  /* FORM PANEL */
   .form-panel {
     background: var(--white);
     border: 1px solid var(--rule);
@@ -181,48 +185,21 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 30px; font-weight: 400; color: var(--ink); margin-bottom: 8px;
   }
-  .form-sub { font-size: 14px; color: var(--tide-light); margin-bottom: 32px; line-height: 1.65; }
+  .form-sub {
+    font-size: 14px; color: var(--tide-light); margin-bottom: 32px; line-height: 1.65;
+  }
 
-  .form-group { margin-bottom: 16px; }
-  .form-group label {
-    display: block; font-size: 10px; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--tide-light); margin-bottom: 7px; font-weight: 400;
+  /* HubSpot form overrides — match Kyma brand */
+  .hs-form-frame,
+  .hs-form-frame iframe {
+    width: 100% !important;
+    border: none !important;
   }
-  .form-group input, .form-group select, .form-group textarea {
-    width: 100%; padding: 13px 14px;
-    border: 1px solid var(--rule); border-radius: 0;
-    font-family: 'DM Sans', sans-serif; font-size: 14.5px; color: var(--ink);
-    background: var(--white); transition: border-color 0.2s;
-    outline: none; appearance: none;
-  }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    border-color: var(--gold); background: var(--gold-light);
-  }
-  .form-group textarea { min-height: 120px; resize: vertical; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .form-divider { height: 1px; background: var(--rule); margin: 24px 0; }
-  .consent { font-size: 12px; color: var(--mist); line-height: 1.6; margin: 16px 0 22px; }
 
-  .btn-submit {
-    width: 100%; padding: 17px;
-    background: var(--gold); color: var(--white);
-    font-family: 'DM Sans', sans-serif; font-weight: 400;
-    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-    border: none; cursor: pointer; transition: background 0.3s;
+  /* Override HubSpot's default styles to match Kyma aesthetic */
+  .hs-form-frame .hs-form fieldset {
+    max-width: 100% !important;
   }
-  .btn-submit:hover { background: var(--gold-pale); }
-
-  .success-msg { display: none; text-align: center; padding: 52px 20px; }
-  .success-msg .check {
-    width: 64px; height: 64px; background: var(--gold);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 24px; font-size: 26px; color: white;
-  }
-  .success-msg h3 {
-    font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 400;
-    color: var(--ink); margin-bottom: 12px;
-  }
-  .success-msg p { color: var(--tide-light); font-size: 15px; line-height: 1.75; max-width: 340px; margin: 0 auto; }
 
   /* OTHER WAYS IN */
   .other-ways {
@@ -298,7 +275,7 @@
     .hero-content { padding: 120px 24px 72px; }
     .contact { padding: 72px 24px; }
     .contact-inner { grid-template-columns: 1fr; gap: 48px; }
-    .form-row { grid-template-columns: 1fr; }
+    .form-panel { padding: 36px 24px; }
     .other-ways { padding: 64px 24px; }
     .ways-grid { grid-template-columns: 1fr; }
     .way-card { border-right: none; border-bottom: 1px solid var(--rule); }
@@ -369,7 +346,7 @@
         <div class="contact-row">
           <div class="contact-row-label">Advisors</div>
           <div>
-            <div class="contact-row-value"><a href="advisors.html">Referral introduction form →</a></div>
+            <div class="contact-row-value"><a href="kyma-advisors.html">Referral introduction form →</a></div>
             <div class="contact-row-sub">For CPAs, estate attorneys, 1031 specialists, and wealth managers.</div>
           </div>
         </div>
@@ -394,109 +371,17 @@
       </div>
     </div>
 
-    <!-- RIGHT — FORM -->
+    <!-- RIGHT — HUBSPOT FORM -->
     <div class="contact-right reveal">
       <div class="form-panel">
         <h3>Tell Us About Your Land</h3>
         <p class="form-sub">Fill out what you know. Nothing here is required beyond an email address — send us whatever you're comfortable sharing at this stage.</p>
 
-        <div id="contact-form-inner">
-
-          <div class="form-row">
-            <div class="form-group">
-              <label>First Name</label>
-              <input type="text" id="fname" placeholder="First name">
-            </div>
-            <div class="form-group">
-              <label>Last Name</label>
-              <input type="text" id="lname" placeholder="Last name">
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" id="email" placeholder="you@example.com" required>
-          </div>
-          <div class="form-group">
-            <label>Phone Number (optional)</label>
-            <input type="tel" id="phone" placeholder="+1 (555) 000-0000">
-          </div>
-
-          <div class="form-divider"></div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label>State</label>
-              <select id="state">
-                <option value="">Select a state...</option>
-                <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option>
-                <option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option>
-                <option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option>
-                <option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option>
-                <option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option>
-                <option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
-                <option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option>
-                <option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option>
-                <option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
-                <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option>
-                <option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option>
-                <option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option>
-                <option>Wisconsin</option><option>Wyoming</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>County</label>
-              <input type="text" id="county" placeholder="e.g. Bonneville County">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label>Approximate Acreage</label>
-              <select id="acreage">
-                <option value="">Select range...</option>
-                <option>Under 5 acres</option>
-                <option>5–20 acres</option>
-                <option>20–100 acres</option>
-                <option>100–500 acres</option>
-                <option>500+ acres</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>County Tax Parcel / APN</label>
-              <input type="text" id="parcel-id" placeholder="Assessor parcel number">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>Property Address or General Location</label>
-            <input type="text" id="address" placeholder="Street address, or nearest city / intersection if unassigned">
-          </div>
-
-          <div class="form-group">
-            <label>How Can We Help?</label>
-            <select id="inquiry-type">
-              <option value="">Select...</option>
-              <option>Request a complimentary land assessment</option>
-              <option>Learn more about the Kyma model</option>
-              <option>Discuss a specific parcel or situation</option>
-              <option>Download the white paper</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Tell Us More (optional)</label>
-            <textarea id="notes" placeholder="Current use, what you've been considering, any relevant context — whatever you're comfortable sharing."></textarea>
-          </div>
-
-          <p class="consent">By submitting, you agree to be contacted by a Kyma principal regarding your land and the Kyma model. We respect your privacy and never share your information.</p>
-          <button class="btn-submit" onclick="handleSubmit(event)">Send Message →</button>
-        </div>
-
-        <div class="success-msg" id="success-msg">
-          <div class="check">✓</div>
-          <h3>Message received.</h3>
-          <p>A Kyma principal will review your message and be in touch within one business day. In the meantime, the white paper is available for download on our homepage.</p>
+        <!-- HubSpot Form -->
+        <div class="hs-form-frame"
+             data-region="na2"
+             data-form-id="565a1d30-dc5f-4309-a2c3-7d12ce3c6538"
+             data-portal-id="245466190">
         </div>
       </div>
     </div>
@@ -505,46 +390,46 @@
 </section>
 
 <!-- OTHER WAYS IN -->
-<div class="other-ways">
+<section class="other-ways">
   <div class="other-ways-header reveal">
-    <div class="section-label">Not Ready to Reach Out?</div>
-    <h2>A few other places<br>to <em>start.</em></h2>
-    <p>If you'd like to learn more before getting in touch, here are three good starting points.</p>
+    <div class="section-label">Other Ways to Connect</div>
+    <h2>Not ready to fill out<br>a <em>form?</em></h2>
+    <p>There is no wrong way to start. Reach out however feels right — we respond to every inquiry personally.</p>
   </div>
   <div class="ways-grid">
     <div class="way-card reveal">
-      <div class="way-label">Free Download</div>
-      <h3>The Landowner's Blueprint</h3>
-      <p>The complete guide to the Kyma model — waterfall mechanics, tax considerations, real project timelines, and how to evaluate hold versus exit. Written for landowners who want to understand the model fully before any conversation.</p>
-      <a href="index.html#capture">Download the White Paper →</a>
-    </div>
-    <div class="way-card reveal">
-      <div class="way-label">The Process</div>
-      <h3>How It Works</h3>
-      <p>A plain-language walkthrough of all six phases — from land assessment through construction, lease-up, stabilization, and your final election. Includes an FAQ covering the questions we hear most often.</p>
-      <a href="how-it-works.html">Read How It Works →</a>
+      <div class="way-label">For Landowners</div>
+      <h3>Request a Land Assessment</h3>
+      <p>A no-cost, no-obligation review of your land's development potential. We'll tell you honestly whether there's an opportunity worth pursuing.</p>
+      <a href="#contact-form">Start here →</a>
     </div>
     <div class="way-card reveal">
       <div class="way-label">For Advisors</div>
-      <h3>Referring a Client?</h3>
-      <p>If you are a CPA, estate attorney, 1031 specialist, or wealth manager with a client who holds underutilized land, the For Advisors page has a dedicated referral introduction form built specifically for that conversation.</p>
-      <a href="advisors.html">Go to For Advisors →</a>
+      <h3>Submit a Client Referral</h3>
+      <p>CPAs, estate attorneys, 1031 specialists, and wealth managers — use our dedicated referral form to introduce a client situation confidentially.</p>
+      <a href="kyma-advisors.html">Advisor form →</a>
+    </div>
+    <div class="way-card reveal">
+      <div class="way-label">Resources</div>
+      <h3>Read the White Paper First</h3>
+      <p>Not sure if Kyma is right for your situation? The Landowner's Blueprint walks through the entire model — free, with no obligation.</p>
+      <a href="index.html#capture">Download free →</a>
     </div>
   </div>
-</div>
+</section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">KYMA.</div>
   <div class="footer-links">
     <a href="index.html">Home</a>
-    <a href="how-it-works.html">How It Works</a>
-    <a href="about.html">About</a>
-    <a href="advisors.html">For Advisors</a>
-    <a href="contact.html">Contact</a>
-    <a href="#">Privacy Policy</a>
+    <a href="kyma-how-it-works.html">How It Works</a>
+    <a href="kyma-about.html">About</a>
+    <a href="kyma-advisors.html">For Advisors</a>
+    <a href="kyma-contact.html">Contact</a>
+    <a href="privacy.html">Privacy Policy</a>
   </div>
-  <p>© 2025 Kyma Partners &nbsp;|&nbsp; kymapartners.co &nbsp;|&nbsp; This material is for informational purposes only and does not constitute an offer or solicitation to invest. Past performance is not indicative of future results. All investments involve risk.</p>
+  <p>© 2025 Kyma Partners &nbsp;|&nbsp; withkyma.com &nbsp;|&nbsp; This material is for informational purposes only and does not constitute an offer to sell, or a solicitation of an offer to buy, any security or partnership interest. All financial projections and illustrations are hypothetical and do not represent past performance or a guarantee of future results. Real estate development involves substantial risk, including the risk of loss of all invested capital. This is not tax or legal advice. Consult qualified advisors before making any investment decision.</p>
 </footer>
 
 <script>
@@ -557,31 +442,6 @@
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
   reveals.forEach(r => observer.observe(r));
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    if (!email) { alert('Please enter your email address.'); return; }
-    const payload = {
-      firstName: document.getElementById('fname').value,
-      lastName: document.getElementById('lname').value,
-      email,
-      phone: document.getElementById('phone').value,
-      state: document.getElementById('state').value,
-      county: document.getElementById('county').value,
-      acreage: document.getElementById('acreage').value,
-      parcelId: document.getElementById('parcel-id').value,
-      address: document.getElementById('address').value,
-      inquiryType: document.getElementById('inquiry-type').value,
-      notes: document.getElementById('notes').value,
-      leadType: 'contact',
-      timestamp: new Date().toISOString(),
-      source: 'kyma-contact-page'
-    };
-    console.log('Contact Payload:', payload);
-    document.getElementById('contact-form-inner').style.display = 'none';
-    document.getElementById('success-msg').style.display = 'block';
-  }
 </script>
 
 </body>
