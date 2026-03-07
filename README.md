@@ -1,2 +1,2 @@
-# Kyma-Website
+# KymaWebsite
 Kyma Partners website
