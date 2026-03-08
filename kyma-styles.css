@@ -1,0 +1,64 @@
+/* ============================================================
+   KYMA PARTNERS — Shared Stylesheet
+   kyma-styles.css
+   
+   To change the entire site's color scheme, edit the
+   :root variables below. Changes apply to all pages instantly.
+   ============================================================ */
+
+/* ── GOOGLE FONTS ── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+/* ── COLOR VARIABLES ── */
+/* Edit these to change the color scheme across the entire site */
+:root {
+  --ink:        #2b2c33;   /* primary text */
+  --bone:       #efede8;   /* light background sections */
+  --sand:       #e8e5de;   /* slightly darker bone */
+  --tide:       #4e4b4a;   /* secondary text */
+  --tide-light: #797472;   /* muted text */
+  --gold:       #7a4228;   /* primary brand color */
+  --gold-pale:  #975835;   /* hover state for gold */
+  --gold-light: #f4e8e0;   /* gold tint background */
+  --mist:       #8a8d99;   /* placeholder / subtle text */
+  --white:      #f9f8f7;   /* page background */
+  --rule:       #dedad3;   /* borders and dividers */
+}
+
+/* ── RESET ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in          { animation: fadeInUp 0.9s ease both; }
+.fade-in-delay-1  { animation: fadeInUp 0.9s 0.2s ease both; }
+.fade-in-delay-2  { animation: fadeInUp 0.9s 0.4s ease both; }
+.fade-in-delay-3  { animation: fadeInUp 0.9s 0.6s ease both; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

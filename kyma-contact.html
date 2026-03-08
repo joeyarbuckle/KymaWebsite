@@ -4,39 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | Kyma Partners</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="kyma-styles.css">
 <!-- HubSpot Form Embed -->
 <script src="https://js-na2.hsforms.net/forms/embed/245466190.js" defer></script>
 
 <style>
-  :root {
-    --ink:        #2b2c33;
-    --bone:       #efede8;
-    --sand:       #e8e5de;
-    --tide:       #4e4b4a;
-    --tide-light: #797472;
-    --gold:       #7a4228;
-    --gold-pale:  #975835;
-    --gold-light: #f4e8e0;
-    --mist:       #8a8d99;
-    --white:      #f9f8f7;
-    --rule:       #dedad3;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--white);
-    color: var(--ink);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-  }
-
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -260,15 +232,6 @@
   }
   .footer-links a:hover { color: var(--gold); }
   footer p { font-size: 11.5px; color: rgba(239,237,232,0.28); width: 100%; line-height: 1.7; }
-
-  /* ANIMATIONS */
-  @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-  .fade-in { animation: fadeInUp 0.9s ease both; }
-  .fade-in-delay-1 { animation: fadeInUp 0.9s 0.2s ease both; }
-  .fade-in-delay-2 { animation: fadeInUp 0.9s 0.4s ease both; }
-  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
   /* MOBILE */
   @media (max-width: 900px) {
     nav { padding: 18px 24px; }
