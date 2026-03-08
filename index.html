@@ -11,33 +11,556 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="kyma-styles.css">
-
 <style>
+  :root {
+    --ink:        #2b2c33;
+    --bone:       #efede8;
+    --sand:       #e8e5de;
+    --tide:       #4e4b4a;
+    --tide-light: #797472;
+    --gold:       #7a4228;
+    --gold-pale:  #975835;
+    --gold-light: #f4e8e0;
+    --mist:       #8a8d99;
+    --white:      #f9f8f7;
+    --rule:       #dedad3;
+  }
 
-  /* ── HOW IT WORKS (homepage variant) ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 56px;
+    background: rgba(249,248,247,0.96);
+    border-bottom: 1px solid var(--rule);
+    backdrop-filter: blur(8px);
+  }
+  .logo {
+    text-decoration: none;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 36px;
+  }
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 400;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--tide); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--gold); }
+  nav a.cta-nav {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--white); background: var(--gold);
+    padding: 11px 28px; text-decoration: none;
+    transition: background 0.3s;
+    font-family: 'DM Sans', sans-serif; font-weight: 400;
+    white-space: nowrap;
+  }
+  nav a.cta-nav:hover { background: var(--gold-pale); }
+  /* Mobile nav */
+  .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .nav-toggle span { display: block; width: 22px; height: 1.5px; background: var(--tide); transition: all 0.3s; }
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0;
+      background: rgba(249,248,247,0.98); border-bottom: 1px solid var(--rule);
+      flex-direction: column; align-items: flex-start; gap: 0; padding: 8px 0; }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 14px 24px; width: 100%; border-bottom: 1px solid var(--rule); }
+    .nav-links a:last-child { border-bottom: none; }
+    .nav-toggle { display: flex; }
+    nav a.cta-nav { display: none; }
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex; align-items: center;
+    overflow: hidden;
+    background: var(--bone);
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 80% at 100% 50%, rgba(151,88,53,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 0% 100%, rgba(151,88,53,0.05) 0%, transparent 50%),
+      linear-gradient(160deg, #f9f8f7 0%, #efede8 50%, #e8e5de 100%);
+  }
+
+  /* Subtle topographic line pattern */
+  .grid-lines {
+    position: absolute; inset: 0; opacity: 0.06;
+    background-image:
+      linear-gradient(var(--tide) 1px, transparent 1px),
+      linear-gradient(90deg, var(--tide) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  /* Animated wave SVG at bottom of hero */
+  .wave-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 220px; opacity: 0.07;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 800px;
+    padding: 140px 80px 80px;
+  }
+
+  .eyebrow {
+    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 16px;
+    font-weight: 400;
+  }
+  .eyebrow::before {
+    content: ''; display: block; width: 36px; height: 1px; background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(46px, 6.5vw, 84px);
+    font-weight: 300; line-height: 1.06;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+  h1 em {
+    font-style: italic; color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 17px; line-height: 1.75; color: var(--tide);
+    max-width: 520px; margin-bottom: 52px;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold); color: var(--white);
+    padding: 16px 36px;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: all 0.3s; font-family: 'DM Sans', sans-serif; font-weight: 400;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-pale); transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: var(--sand); color: var(--ink);
+    padding: 16px 36px;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    text-decoration: none; border: 1px solid var(--tide); cursor: pointer;
+    transition: all 0.3s; font-family: 'DM Sans', sans-serif; font-weight: 400;
+    display: inline-block;
+  }
+  .btn-ghost:hover { background: var(--tide); border-color: var(--tide); color: var(--white); }
+
+  /* Scroll indicator */
+  .scroll-hint {
+    position: absolute; bottom: 40px; left: 80px;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--tide-light); display: flex; align-items: center; gap: 12px;
+    animation: fadeInUp 1s 1.5s both;
+  }
+  .scroll-hint::after {
+    content: ''; display: block; width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--tide-light), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  /* ── METRICS STRIP ── */
+  /* Dark band — the one deliberate dark element, like Terra Vista's accent strips */
+  .metrics {
+    background: var(--ink);
+    padding: 56px 80px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    position: relative;
+  }
+  .metric { text-align: center; }
+  .metric-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px; font-weight: 300; color: var(--bone);
+    line-height: 1;
+  }
+  .metric-label {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(239,237,232,0.55); margin-top: 8px;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 112px 80px; }
+
+  .section-label {
+    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+    font-weight: 400;
+  }
+  .section-label::before { content: ''; width: 28px; height: 1px; background: var(--gold); display: block; }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 4.5vw, 56px);
+    font-weight: 300; line-height: 1.12;
+    color: var(--ink);
+  }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  /* ── HOW IT WORKS ── */
   .how {
     background: var(--white);
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
   }
-  .how-header { max-width: 600px; margin-bottom: 72px; }
-  .how-header p { margin-top: 24px; font-size: 16px; line-height: 1.85; color: var(--tide); }
 
-  /* ── STRUCTURE SECTION ── */
+  .how-header { max-width: 600px; margin-bottom: 72px; }
+  .how-header p {
+    margin-top: 24px; font-size: 16px; line-height: 1.85;
+    color: var(--tide);
+  }
+
+  .steps {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule);
+    margin-bottom: 0;
+  }
+  .step {
+    padding: 48px 40px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    transition: background 0.3s;
+    background: var(--white);
+  }
+  .step:nth-child(3n) { border-right: none; }
+  .step:nth-last-child(-n+3) { border-bottom: none; }
+  .step:hover { background: var(--bone); }
+  .step::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: transparent;
+    transition: background 0.3s;
+  }
+  .step:hover::before { background: var(--gold); }
+
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px; font-weight: 300;
+    color: rgba(122,66,40,0.42); line-height: 1;
+    margin-bottom: 20px;
+  }
+  .step h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 400; color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .step p { font-size: 14.5px; line-height: 1.8; color: var(--tide); }
+
+  /* ── STRUCTURE / HOW YOU WIN ── */
   .structure {
     background: var(--bone);
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
   }
 
-  /* ── WHO WE SERVE SECTION ── */
+  .options-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+    margin-top: 56px;
+  }
+  .option-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 48px 44px;
+    position: relative; overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .option-card:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(43,44,51,0.08); }
+  .option-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+  .option-card.hold::before { background: var(--tide); }
+  .option-card.exit::before { background: var(--gold); }
+  .option-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 400;
+    color: var(--ink); margin-bottom: 12px;
+  }
+  .option-card .tag {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 20px; display: inline-block; padding: 4px 12px;
+    font-weight: 400;
+  }
+  .option-card.hold .tag { background: rgba(78,75,74,0.08); color: var(--tide); }
+  .option-card.exit .tag { background: rgba(122,66,40,0.09); color: var(--gold); }
+  .option-card p { font-size: 14.5px; line-height: 1.85; color: var(--tide); }
+  .option-card ul { list-style: none; margin-top: 20px; }
+  .option-card ul li {
+    font-size: 14px; color: var(--tide); padding: 9px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .option-card ul li:last-child { border-bottom: none; }
+  .option-card ul li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
+
+  /* ── WHO WE SERVE ── */
   .who {
     background: var(--white);
     border-top: 1px solid var(--rule);
   }
+  .who-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    border: 1px solid var(--rule);
+    margin-top: 56px;
+  }
+  .who-card {
+    padding: 44px 40px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.3s;
+  }
+  .who-card:nth-child(2n) { border-right: none; }
+  .who-card:nth-last-child(-n+2) { border-bottom: none; }
+  .who-card:hover { background: var(--bone); }
+  .who-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400; color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .who-card p { font-size: 14px; line-height: 1.8; color: var(--tide); }
 
-  /* ── ETYMOLOGY SECTION ── */
+  /* ── TESTIMONIAL ── */
+  /* Sienna accent band — like Terra Vista's warm image+quote sections */
+  .testimonial {
+    background: var(--gold);
+    padding: 100px 80px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .testimonial::before {
+    content: '\201C';
+    position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 200px; line-height: 1;
+    color: rgba(255,255,255,0.10);
+    pointer-events: none;
+  }
+  .testimonial blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 38px);
+    font-weight: 300; font-style: italic;
+    line-height: 1.45; color: var(--white);
+    max-width: 760px; margin: 0 auto 36px;
+    position: relative; z-index: 1;
+  }
+  .testimonial cite {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(249,248,247,0.65);
+    font-style: normal; position: relative; z-index: 1;
+    font-weight: 400;
+  }
+
+  /* ── LEAD CAPTURE ── */
+  .capture {
+    background: var(--bone);
+    border-top: 1px solid var(--rule);
+    position: relative; overflow: hidden;
+  }
+  .capture::before {
+    content: 'KYMA';
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 260px; font-weight: 600;
+    color: rgba(122,66,40,0.04);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    white-space: nowrap; pointer-events: none;
+    letter-spacing: 0.05em;
+  }
+  .capture-inner {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 88px;
+    align-items: start;
+  }
+  .capture-left h2 { margin-bottom: 20px; }
+  .capture-left p {
+    font-size: 16px; line-height: 1.85; color: var(--tide); margin-bottom: 36px;
+  }
+  .whitepaper-preview {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--gold);
+    padding: 28px 32px;
+    margin-top: 0;
+  }
+  .whitepaper-preview h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 400; color: var(--ink); margin-bottom: 16px;
+  }
+  .whitepaper-preview ul { list-style: none; }
+  .whitepaper-preview ul li {
+    font-size: 13px; color: var(--tide); padding: 6px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex; gap: 10px; line-height: 1.6;
+  }
+  .whitepaper-preview ul li:last-child { border-bottom: none; }
+  .whitepaper-preview ul li::before { content: '✦'; color: var(--gold); font-size: 8px; margin-top: 4px; flex-shrink: 0; }
+
+  /* Form panel */
+  .form-panel {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 52px 48px;
+    color: var(--ink);
+  }
+  .form-panel h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px; font-weight: 400;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .form-panel .form-sub {
+    font-size: 14px; color: var(--tide-light); margin-bottom: 32px;
+    line-height: 1.65;
+  }
+
+  .form-group { margin-bottom: 18px; }
+  .form-group label {
+    display: block; font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--tide-light); margin-bottom: 7px;
+    font-weight: 400;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 13px 14px;
+    border: 1px solid var(--rule); border-radius: 0;
+    font-family: 'DM Sans', sans-serif; font-size: 14.5px; color: var(--ink);
+    background: var(--white);
+    transition: border-color 0.2s;
+    outline: none; appearance: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--gold);
+    background: var(--gold-light);
+  }
+  .form-group textarea { min-height: 80px; resize: vertical; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .form-panel .consent {
+    font-size: 12px; color: var(--mist); line-height: 1.6; margin: 18px 0 24px;
+  }
+
+  .btn-submit {
+    width: 100%; padding: 17px;
+    background: var(--gold); color: var(--white);
+    font-family: 'DM Sans', sans-serif; font-weight: 400;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    border: none; cursor: pointer;
+    transition: background 0.3s;
+  }
+  .btn-submit:hover { background: var(--gold-pale); }
+
+  .form-divider {
+    text-align: center; margin: 16px 0;
+    font-size: 10px; color: var(--mist); letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .btn-consult {
+    width: 100%; padding: 15px;
+    background: var(--sand); color: var(--tide);
+    font-family: 'DM Sans', sans-serif; font-weight: 400;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    border: 1px solid var(--rule); cursor: pointer;
+    transition: all 0.3s;
+  }
+  .btn-consult:hover { background: var(--tide); color: var(--white); border-color: var(--tide); }
+
+  .success-msg {
+    display: none; text-align: center; padding: 40px 20px;
+  }
+  .success-msg .check {
+    width: 60px; height: 60px; background: var(--gold);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px; font-size: 24px; color: white;
+  }
+  .success-msg h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 400;
+    color: var(--ink); margin-bottom: 10px;
+  }
+  .success-msg p { color: var(--tide-light); font-size: 15px; line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 56px 80px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 24px;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; color: var(--gold); letter-spacing: 0.14em;
+  }
+  .footer-links { display: flex; gap: 32px; }
+  .footer-links a {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(239,237,232,0.45); text-decoration: none; transition: color 0.2s;
+    font-weight: 400;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  footer p {
+    font-size: 11.5px; color: rgba(239,237,232,0.28);
+    width: 100%; line-height: 1.7;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes waveFloat {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-20px); }
+  }
+
+  .fade-in { animation: fadeInUp 0.9s ease both; }
+  .fade-in-delay-1 { animation: fadeInUp 0.9s 0.2s ease both; }
+  .fade-in-delay-2 { animation: fadeInUp 0.9s 0.4s ease both; }
+  .fade-in-delay-3 { animation: fadeInUp 0.9s 0.6s ease both; }
+
+  .reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Wave animation */
+  .animated-wave path {
+    animation: waveFloat 6s ease-in-out infinite;
+  }
+
+  /* ── ETYMOLOGY ── */
   .etymology {
     background: var(--white);
     border-bottom: 1px solid var(--rule);
@@ -47,75 +570,193 @@
     gap: 80px;
     align-items: center;
   }
-  .etymology-greek { text-align: center; position: relative; }
+
+  .etymology-greek {
+    text-align: center;
+    position: relative;
+  }
   .etymology-glyph {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 148px; font-weight: 300; line-height: 1;
-    color: var(--gold); opacity: 0.18; letter-spacing: -0.02em;
-    display: block; user-select: none;
+    font-size: 148px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--gold);
+    opacity: 0.18;
+    letter-spacing: -0.02em;
+    display: block;
+    user-select: none;
   }
   .etymology-transliteration {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 52px; font-weight: 300; color: var(--gold);
-    letter-spacing: 0.18em; display: block;
-    margin-top: -24px; position: relative; z-index: 1;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--gold);
+    letter-spacing: 0.18em;
+    display: block;
+    margin-top: -24px;
+    position: relative;
+    z-index: 1;
   }
   .etymology-pronunciation {
-    font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 300;
-    color: var(--tide-light); letter-spacing: 0.14em; margin-top: 10px; display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--tide-light);
+    letter-spacing: 0.14em;
+    margin-top: 10px;
+    display: block;
   }
   .etymology-pos {
-    font-family: 'Cormorant Garamond', serif; font-size: 14px; font-style: italic;
-    color: var(--mist); letter-spacing: 0.06em; margin-top: 6px; display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--mist);
+    letter-spacing: 0.06em;
+    margin-top: 6px;
+    display: block;
   }
-  .etymology-right { position: relative; }
+
+  .etymology-rule {
+    width: 1px;
+    height: 100%;
+    background: var(--rule);
+    position: absolute;
+    left: calc(33.33% + 0px);
+    top: 0;
+  }
+
+  .etymology-right {
+    position: relative;
+  }
   .etymology-definition {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 28px; font-weight: 300; line-height: 1.45;
-    color: var(--ink); margin-bottom: 28px; font-style: italic;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1.45;
+    color: var(--ink);
+    margin-bottom: 28px;
+    font-style: italic;
   }
-  .etymology-definition strong { font-style: normal; font-weight: 500; color: var(--gold); }
-  .etymology-body { font-size: 15.5px; line-height: 1.85; color: var(--tide); margin-bottom: 20px; }
-  .etymology-body + .etymology-body { padding-top: 20px; border-top: 1px solid var(--rule); }
+  .etymology-definition strong {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--gold);
+  }
+  .etymology-body {
+    font-size: 15.5px;
+    line-height: 1.85;
+    color: var(--tide);
+    margin-bottom: 20px;
+  }
+  .etymology-body + .etymology-body {
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
   .etymology-origin {
-    display: flex; align-items: flex-start; gap: 14px;
-    margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--rule);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
   }
   .etymology-origin-label {
-    font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
-    color: var(--gold); font-weight: 400; padding-top: 3px; white-space: nowrap;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+    padding-top: 3px;
+    white-space: nowrap;
   }
-  .etymology-origin-text { font-size: 13px; line-height: 1.7; color: var(--tide-light); }
+  .etymology-origin-text {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--tide-light);
+  }
+
   .etymology-phases {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 0; border: 1px solid var(--rule); margin: 24px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--rule);
+    margin: 24px 0;
   }
-  .etymology-phase { padding: 28px; border-right: 1px solid var(--rule); }
+  .etymology-phase {
+    padding: 28px 28px;
+    border-right: 1px solid var(--rule);
+  }
   .etymology-phase:last-child { border-right: none; }
   .etymology-phase-label {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 22px; font-weight: 500; font-style: italic;
-    color: var(--gold); margin-bottom: 14px; padding-bottom: 12px;
+    font-size: 22px;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: var(--gold);
+    margin-bottom: 14px;
+    padding-bottom: 12px;
     border-bottom: 1px solid var(--rule);
   }
-  .etymology-phase-body { font-size: 14px; line-height: 1.82; color: var(--tide); }
+  .etymology-phase-body {
+    font-size: 14px;
+    line-height: 1.82;
+    color: var(--tide);
+  }
 
   @media (max-width: 900px) {
-    .etymology { grid-template-columns: 1fr; gap: 40px; padding: 64px 24px; }
-    .etymology-glyph { font-size: 100px; }
-    .etymology-transliteration { font-size: 40px; }
     .etymology-phases { grid-template-columns: 1fr; }
     .etymology-phase { border-right: none; border-bottom: 1px solid var(--rule); }
     .etymology-phase:last-child { border-bottom: none; }
   }
 
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    .etymology {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 64px 24px;
+    }
+    .etymology-glyph { font-size: 100px; }
+    .etymology-transliteration { font-size: 40px; }
+  }
+    nav { padding: 18px 24px; }
+    .hero-content { padding: 110px 24px 60px; }
+    .metrics { padding: 40px 24px; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    section { padding: 72px 24px; }
+    .steps { grid-template-columns: 1fr; }
+    .step:nth-child(3n) { border-right: 1px solid var(--rule); }
+    .step:nth-last-child(-n+3) { border-bottom: 1px solid var(--rule); }
+    .step:last-child { border-bottom: none; }
+    .options-grid { grid-template-columns: 1fr; }
+    .who-grid { grid-template-columns: 1fr; }
+    .who-card:nth-child(2n) { border-right: 1px solid var(--rule); }
+    .who-card:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
+    .who-card:last-child { border-bottom: none; }
+    .capture-inner { grid-template-columns: 1fr; gap: 48px; }
+    footer { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
+    .testimonial { padding: 72px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a class="logo" href="index.html">KYMA<span>.</span></a>
+  <a class="logo" href="index.html" style="display:flex;align-items:center;text-decoration:none;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="230 230 570 100" height="40" style="display:block;">
+    <g stroke-width="2.00" fill="none" stroke-linecap="butt">
+      <path stroke="#b29d8d" vector-effect="non-scaling-stroke" d="M 354.47 256.14 C 349.81 258.94 346.47 261.21 343.97 265.98 C 337.49 278.35 339.99 291.77 349.25 301.73 Q 354.62 307.52 363.62 310.64 Q 379.28 316.09 395.49 315.15 Q 406.52 314.51 416.62 312.22 A 0.28 0.28 0.0 0 0 416.64 311.68 Q 415.89 311.47 414.97 311.42 Q 396.61 310.28 381.73 307.79 Q 371.78 306.12 362.70 300.84 Q 350.32 293.64 349.66 279.33 Q 349.23 269.90 355.43 264.01 Q 362.16 257.61 370.73 257.51 C 377.11 257.43 383.76 259.15 389.34 263.00 A 0.41 0.41 0.0 0 0 389.97 262.58 C 388.56 255.19 384.47 249.62 378.91 244.66 Q 375.94 242.01 370.66 239.57 Q 358.29 233.86 346.42 235.38 Q 335.91 236.73 326.39 241.34 Q 320.03 244.42 310.98 252.79 Q 303.19 259.99 297.88 266.88 Q 288.27 279.34 278.52 291.06 C 273.07 297.62 267.92 302.03 261.54 305.80 C 254.87 309.75 246.91 311.36 238.70 311.74 A 0.44 0.44 0.0 0 0 238.61 312.60 Q 243.44 313.93 249.47 313.68 Q 267.23 312.95 280.25 300.51 Q 289.04 292.12 294.88 284.83 C 301.79 276.19 311.10 265.52 316.04 260.52 Q 325.78 250.64 340.39 244.89 Q 348.69 241.62 358.56 242.82 Q 371.55 244.42 380.81 254.00 A 0.22 0.22 0.0 0 1 380.54 254.34 C 370.49 248.37 357.90 247.87 346.84 250.07 C 342.29 250.97 337.91 253.19 334.05 255.57 Q 323.06 262.34 314.95 272.94 Q 304.27 286.90 293.22 299.93 Q 287.44 306.73 284.61 308.89 C 278.24 313.73 273.55 317.13 266.27 319.87 Q 261.39 321.70 257.80 322.82 Q 257.14 323.02 256.84 323.27 A 0.25 0.25 0.0 0 0 256.99 323.71 Q 268.09 323.97 278.02 319.59 C 288.22 315.08 297.76 307.00 305.03 298.78 Q 316.22 286.14 325.29 274.44 A 0.29 0.28 -22.5 0 1 325.80 274.65 Q 324.01 288.59 331.10 300.66 Q 336.07 309.11 344.23 314.49 Q 359.73 324.70 377.92 323.64 A 0.31 0.31 0.0 0 0 377.99 323.03 Q 375.86 322.43 371.13 321.32 Q 367.85 320.56 362.14 318.32 C 354.14 315.19 348.40 310.52 342.51 304.02 C 335.81 296.64 334.46 287.72 334.14 278.49 C 333.72 266.63 343.14 257.89 354.28 255.65 A 0.27 0.27 0.0 0 1 354.47 256.14"/>
+    </g>
+    <path fill="#72482d" d="M 735.90 316.07 A 0.60 0.60 0.0 0 1 736.48 316.67 L 736.48 317.16 A 0.53 0.53 0.0 0 1 735.95 317.69 L 710.21 317.59 A 0.64 0.63 3.9 0 1 709.58 316.87 L 709.59 316.85 A 1.13 1.12 -0.8 0 1 710.45 315.97 Q 715.08 314.95 717.23 311.97 C 722.01 305.36 725.35 298.20 728.57 290.22 Q 730.34 285.81 732.48 281.26 Q 736.80 272.06 742.31 258.93 C 743.70 255.60 745.82 251.67 747.26 248.26 C 747.88 246.79 749.76 246.36 750.73 247.90 C 753.74 252.66 755.94 258.37 758.69 264.00 Q 769.40 285.91 777.75 303.26 Q 780.66 309.32 784.56 313.43 Q 786.15 315.11 789.86 316.06 C 790.16 316.14 790.57 316.40 790.66 316.76 A 0.71 0.63 82.8 0 1 790.06 317.63 Q 777.66 317.53 763.81 317.89 A 0.77 0.77 0.0 0 1 763.03 317.05 L 763.03 317.00 A 0.99 0.99 0.0 0 1 763.99 316.10 Q 766.59 316.04 768.81 314.66 A 1.12 1.12 0.0 0 0 769.31 313.92 Q 769.77 311.14 768.79 309.22 Q 762.04 295.96 758.64 288.19 A 2.14 2.14 0.0 0 0 756.68 286.91 L 735.37 286.91 A 0.72 0.70 13.9 0 0 734.74 287.28 Q 730.45 295.23 728.12 301.08 C 726.04 306.31 724.71 313.99 731.64 315.60 Q 733.33 315.99 735.90 316.07 Z M 736.51 282.42 A 0.55 0.55 0.0 0 0 737.02 283.19 L 755.21 283.00 A 0.55 0.55 0.0 0 0 755.70 282.22 L 746.40 262.35 A 0.55 0.55 0.0 0 0 745.40 262.36 L 736.51 282.42 Z"/>
+    <path fill="#72482d" d="M 456.87 280.07 A 0.16 0.16 0.0 0 0 457.14 280.19 Q 466.42 271.57 473.20 264.63 Q 474.51 263.29 477.73 260.32 C 480.42 257.84 484.86 253.94 481.49 250.99 C 480.47 250.11 478.19 249.87 476.74 249.52 A 0.93 0.93 0.0 0 1 476.96 247.69 L 501.88 247.69 A 1.02 1.02 0.0 0 1 502.06 249.72 L 498.12 250.43 A 2.78 2.51 -60.9 0 0 497.33 250.70 Q 489.04 255.00 485.59 258.34 Q 477.18 266.46 469.96 273.07 A 1.83 1.83 0.0 0 0 469.76 275.55 C 471.64 277.92 472.89 280.44 474.91 283.04 Q 482.94 293.43 492.91 306.91 Q 493.13 307.21 496.10 310.12 C 499.49 313.44 502.29 315.81 507.23 316.11 A 0.78 0.77 -89.2 0 1 507.96 316.87 L 507.96 316.90 A 0.71 0.70 -90.0 0 1 507.26 317.61 L 488.67 317.60 A 2.88 2.86 -18.0 0 1 486.39 316.45 L 461.28 282.95 A 1.07 1.07 0.0 0 0 459.74 282.76 Q 457.13 284.89 457.05 289.49 Q 456.96 294.54 457.29 310.46 C 457.40 315.58 461.05 316.08 465.08 316.21 A 0.47 0.47 0.0 0 1 465.53 316.68 L 465.53 317.09 A 0.57 0.56 -0.0 0 1 464.96 317.65 L 437.85 317.65 A 0.80 0.79 78.1 0 1 437.12 317.17 L 437.01 316.91 A 0.59 0.59 0.0 0 1 437.52 316.11 C 441.42 315.83 445.46 315.93 445.68 311.07 C 446.50 292.74 446.35 279.15 445.94 261.50 C 445.77 253.75 446.25 250.50 438.09 249.64 A 0.99 0.98 -87.1 0 1 437.21 248.66 L 437.21 248.28 A 0.72 0.71 -89.6 0 1 437.93 247.56 L 465.08 247.86 A 0.03 0.03 0.0 0 1 465.11 247.89 Q 465.10 248.12 465.12 248.14 A 0.66 0.66 0.0 0 1 464.92 249.34 C 461.00 250.33 457.23 250.60 457.18 255.78 Q 457.02 273.38 456.87 280.07 Z"/>
+    <path fill="#72482d" d="M 539.71 316.82 L 539.70 316.78 A 0.78 0.77 -89.7 0 1 540.54 315.94 C 543.96 316.25 547.86 315.57 548.21 311.32 Q 549.18 299.29 548.64 287.48 Q 548.57 285.80 546.40 282.60 Q 536.14 267.49 527.71 255.04 Q 524.40 250.16 519.23 249.64 A 1.06 1.05 2.7 0 1 518.27 248.59 L 518.27 248.22 A 0.48 0.48 0.0 0 1 518.75 247.74 Q 530.13 247.74 542.50 247.54 Q 543.96 247.52 545.32 247.81 A 0.80 0.79 44.3 0 1 545.34 249.36 C 543.19 249.89 539.28 250.60 540.23 253.43 Q 540.79 255.11 544.46 260.38 C 548.89 266.74 552.67 273.55 556.82 279.69 A 0.89 0.88 44.4 0 0 558.29 279.68 Q 564.97 269.32 571.19 258.21 Q 574.33 252.59 568.84 250.21 Q 568.11 249.89 566.00 249.14 A 0.71 0.71 0.0 0 1 566.23 247.76 Q 581.58 247.52 589.21 247.77 Q 589.58 247.78 589.73 248.13 A 1.03 0.98 -21.6 0 1 589.11 249.47 C 586.39 250.42 584.17 251.20 582.42 252.79 Q 576.97 257.73 575.20 260.45 Q 566.26 274.12 560.77 283.49 A 5.12 5.12 0.0 0 0 560.07 285.80 Q 559.45 296.02 559.83 307.45 C 560.07 314.71 561.26 315.55 568.34 316.16 A 0.71 0.71 0.0 0 1 568.98 316.97 L 568.98 317.00 A 0.77 0.76 5.5 0 1 568.23 317.61 L 540.65 317.63 A 0.95 0.95 0.0 0 1 539.71 316.82 Z"/>
+    <path fill="#72482d" d="M 619.59 264.33 A 0.22 0.22 0.0 0 0 619.17 264.42 Q 618.40 281.32 618.02 302.74 Q 617.94 307.35 619.59 311.90 C 620.58 314.62 624.55 315.98 627.18 316.06 A 0.78 0.77 -83.6 0 1 627.91 316.98 L 627.84 317.28 A 0.48 0.48 0.0 0 1 627.37 317.65 L 604.41 317.65 A 0.60 0.60 0.0 0 1 603.81 317.05 L 603.81 316.59 A 0.58 0.57 -2.8 0 1 604.33 316.02 C 610.84 315.40 612.84 311.04 613.50 305.25 C 614.07 300.26 613.77 295.62 614.21 289.92 Q 615.37 274.86 615.25 257.73 C 615.22 252.75 610.30 251.17 605.55 249.64 Q 604.82 249.40 604.68 248.94 A 0.90 0.85 -9.1 0 1 605.53 247.84 Q 611.78 247.61 621.94 247.65 A 3.26 3.25 76.7 0 1 624.85 249.45 L 650.19 299.99 A 0.50 0.49 44.2 0 0 651.08 299.98 Q 661.37 278.09 673.22 250.76 C 674.23 248.43 674.93 247.61 677.69 247.61 Q 685.11 247.62 692.02 247.79 A 0.87 0.87 0.0 0 1 692.16 249.52 C 688.54 250.21 686.09 250.03 683.81 253.85 A 2.25 2.24 -29.4 0 0 683.50 254.95 C 683.22 274.67 684.07 283.06 685.72 308.25 C 686.10 313.97 688.02 315.74 693.64 315.97 A 0.84 0.84 0.0 0 1 694.44 316.81 L 694.44 317.18 A 0.50 0.50 0.0 0 1 693.94 317.68 L 666.72 317.68 A 0.66 0.65 -13.0 0 1 666.13 317.32 L 665.88 316.83 A 0.56 0.55 -14.1 0 1 666.36 316.03 Q 669.84 315.95 672.23 314.80 A 2.42 2.38 2.7 0 0 673.20 313.93 C 675.10 310.91 674.35 303.08 674.16 299.75 Q 673.16 281.88 672.57 265.50 Q 672.55 264.83 672.42 264.48 A 0.44 0.44 0.0 0 0 671.60 264.46 Q 661.92 286.00 649.38 315.37 Q 648.77 316.79 648.21 317.28 A 1.51 1.51 0.0 0 1 645.89 316.80 L 619.59 264.33 Z"/>
+    <path fill="#f1f1ec" d="M 736.51 282.42 L 745.40 262.36 A 0.55 0.55 0.0 0 1 746.40 262.35 L 755.70 282.22 A 0.55 0.55 0.0 0 1 755.21 283.00 L 737.02 283.19 A 0.55 0.55 0.0 0 1 736.51 282.42 Z"/>
+  </svg>
+</a>
   <div class="nav-links" id="nav-links">
     <a href="kyma-how-it-works.html">How It Works</a>
     <a href="kyma-about.html">About</a>
