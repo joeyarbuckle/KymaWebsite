@@ -4,247 +4,74 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | Kyma Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="kyma-styles.css">
+
 <!-- HubSpot Form Embed -->
 <script src="https://js-na2.hsforms.net/forms/embed/245466190.js" defer></script>
 
 <style>
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 22px 56px;
-    background: rgba(249,248,247,0.96);
-    border-bottom: 1px solid var(--rule);
-    backdrop-filter: blur(8px);
-  }
-  .logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px; font-weight: 500; letter-spacing: 0.14em;
-    color: var(--gold); text-decoration: none;
-  }
-  .logo span { color: var(--tide-light); }
-  nav a.cta-nav {
-    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--white); background: var(--gold);
-    padding: 11px 28px; text-decoration: none;
-    transition: background 0.3s;
-    font-family: 'DM Sans', sans-serif; font-weight: 400;
-  }
-  nav a.cta-nav:hover { background: var(--gold-pale); }
 
-  /* HERO */
-  .hero {
-    min-height: 52vh;
-    position: relative;
-    display: flex; align-items: center;
-    overflow: hidden;
-    background: var(--bone);
-  }
-  .hero-bg {
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 70% 80% at 100% 50%, rgba(151,88,53,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 50% at 0% 100%, rgba(151,88,53,0.05) 0%, transparent 50%),
-      linear-gradient(160deg, #f9f8f7 0%, #efede8 50%, #e8e5de 100%);
-  }
-  .grid-lines {
-    position: absolute; inset: 0; opacity: 0.06;
-    background-image:
-      linear-gradient(var(--tide) 1px, transparent 1px),
-      linear-gradient(90deg, var(--tide) 1px, transparent 1px);
-    background-size: 80px 80px;
-  }
-  .wave-overlay {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 160px; opacity: 0.07;
-  }
-  .hero-content {
-    position: relative; z-index: 2;
-    max-width: 720px;
-    padding: 160px 80px 88px;
-  }
-  .eyebrow {
-    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 28px;
-    display: flex; align-items: center; gap: 16px; font-weight: 400;
-  }
-  .eyebrow::before { content: ''; display: block; width: 36px; height: 1px; background: var(--gold); }
-  h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(38px, 5vw, 66px);
-    font-weight: 300; line-height: 1.1;
-    color: var(--ink); margin-bottom: 28px;
-  }
-  h1 em { font-style: italic; color: var(--gold); }
-  .hero-sub {
-    font-size: 17px; line-height: 1.8; color: var(--tide);
-    max-width: 520px; font-weight: 300;
-  }
-
-  /* CONTACT SECTION */
-  .contact {
+  /* ── CONTACT SECTION ── */
+  .contact-section {
     background: var(--white);
     border-top: 1px solid var(--rule);
-    padding: 100px 80px;
   }
   .contact-inner {
     display: grid; grid-template-columns: 1fr 1fr;
     gap: 88px; align-items: start;
   }
+  .contact-left h2 { margin-bottom: 24px; }
+  .contact-left > p { font-size: 16px; line-height: 1.85; color: var(--tide); margin-bottom: 48px; }
+  .contact-details { border: 1px solid var(--rule); }
+  .contact-detail {
+    padding: 24px 32px; border-bottom: 1px solid var(--rule);
+    display: flex; gap: 20px; align-items: flex-start;
+  }
+  .contact-detail:last-child { border-bottom: none; }
+  .contact-detail-label {
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); font-weight: 400; min-width: 80px; padding-top: 2px;
+  }
+  .contact-detail-value { font-size: 14.5px; color: var(--tide); line-height: 1.6; }
+  .contact-detail-value a { color: var(--gold); text-decoration: none; }
+  .contact-detail-value a:hover { color: var(--gold-pale); }
 
-  /* LEFT */
-  .section-label {
-    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 20px;
-    display: flex; align-items: center; gap: 12px; font-weight: 400;
-  }
-  .section-label::before { content: ''; width: 28px; height: 1px; background: var(--gold); display: block; }
-  h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(30px, 3.5vw, 48px);
-    font-weight: 300; line-height: 1.14; color: var(--ink);
-    margin-bottom: 24px;
-  }
-  h2 em { font-style: italic; color: var(--gold); }
-  .contact-left p {
-    font-size: 15.5px; line-height: 1.9; color: var(--tide); margin-bottom: 20px;
-  }
-  .contact-left p + p { padding-top: 20px; border-top: 1px solid var(--rule); }
-
-  .contact-details { margin-top: 40px; border: 1px solid var(--rule); }
-  .contact-row {
-    display: flex; align-items: flex-start; gap: 20px;
-    padding: 22px 28px; border-bottom: 1px solid var(--rule);
-    transition: background 0.25s;
-  }
-  .contact-row:last-child { border-bottom: none; }
-  .contact-row:hover { background: var(--bone); }
-  .contact-row-label {
-    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--gold); font-weight: 400; min-width: 72px; padding-top: 2px;
-  }
-  .contact-row-value { font-size: 15px; color: var(--ink); line-height: 1.5; }
-  .contact-row-value a { color: var(--ink); text-decoration: none; transition: color 0.2s; }
-  .contact-row-value a:hover { color: var(--gold); }
-  .contact-row-sub { font-size: 12px; color: var(--tide-light); margin-top: 3px; line-height: 1.5; }
-
-  .expect-block {
-    margin-top: 32px; background: var(--bone);
-    border: 1px solid var(--rule); border-left: 3px solid var(--gold);
-    padding: 28px 32px;
-  }
-  .expect-block h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px; font-weight: 400; color: var(--ink); margin-bottom: 16px;
-  }
-  .expect-block ul { list-style: none; }
-  .expect-block ul li {
-    font-size: 13px; color: var(--tide); padding: 8px 0;
-    border-bottom: 1px solid var(--rule);
-    display: flex; gap: 10px; line-height: 1.6; align-items: flex-start;
-  }
-  .expect-block ul li:last-child { border-bottom: none; }
-  .expect-block ul li::before { content: '✦'; color: var(--gold); font-size: 8px; margin-top: 4px; flex-shrink: 0; }
-
-  /* FORM PANEL */
-  .form-panel {
-    background: var(--white);
-    border: 1px solid var(--rule);
-    padding: 52px 48px;
-  }
-  .form-panel h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 30px; font-weight: 400; color: var(--ink); margin-bottom: 8px;
-  }
-  .form-sub {
-    font-size: 14px; color: var(--tide-light); margin-bottom: 32px; line-height: 1.65;
-  }
-
-  /* HubSpot form overrides — match Kyma brand */
-  .hs-form-frame,
-  .hs-form-frame iframe {
-    width: 100% !important;
-    border: none !important;
-  }
-
-  /* Override HubSpot's default styles to match Kyma aesthetic */
-  .hs-form-frame .hs-form fieldset {
-    max-width: 100% !important;
-  }
-
-  /* OTHER WAYS IN */
+  /* ── OTHER WAYS IN ── */
   .other-ways {
     background: var(--bone);
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
-    padding: 80px 80px;
   }
-  .other-ways-header { max-width: 540px; margin-bottom: 52px; }
-  .other-ways-header h2 { margin-bottom: 16px; }
-  .other-ways-header p { font-size: 15.5px; line-height: 1.85; color: var(--tide); }
-
-  .ways-grid {
+  .other-ways-grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 0; border: 1px solid var(--rule);
+    border: 1px solid var(--rule); margin-top: 56px;
   }
-  .way-card {
-    padding: 40px 36px; border-right: 1px solid var(--rule);
-    background: var(--white); transition: background 0.3s; position: relative;
+  .other-way {
+    padding: 44px 36px;
+    border-right: 1px solid var(--rule);
+    transition: background 0.3s;
+    background: var(--white);
   }
-  .way-card:last-child { border-right: none; }
-  .way-card:hover { background: var(--gold-light); }
-  .way-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: transparent; transition: background 0.3s;
-  }
-  .way-card:hover::before { background: var(--gold); }
-  .way-label {
-    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--gold); font-weight: 400; margin-bottom: 14px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .way-label::before { content: ''; width: 18px; height: 1px; background: var(--gold); display: block; }
-  .way-card h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px; font-weight: 400; color: var(--ink); margin-bottom: 12px;
-  }
-  .way-card p { font-size: 13.5px; line-height: 1.8; color: var(--tide); margin-bottom: 20px; }
-  .way-card a {
-    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--gold); text-decoration: none; font-weight: 400;
-    display: inline-flex; align-items: center; gap: 8px; transition: gap 0.2s;
-  }
-  .way-card a:hover { gap: 12px; }
+  .other-way:last-child { border-right: none; }
+  .other-way:hover { background: var(--gold-light); }
+  .other-way h4 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--gold); margin-bottom: 12px; }
+  .other-way p { font-size: 14px; line-height: 1.8; color: var(--tide); margin-bottom: 20px; }
+  .other-way a { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); text-decoration: none; font-weight: 400; }
+  .other-way a:hover { color: var(--gold-pale); }
 
-  /* FOOTER */
-  footer {
-    background: var(--ink);
-    padding: 56px 80px;
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 24px;
-  }
-  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--gold); letter-spacing: 0.14em; }
-  .footer-links { display: flex; gap: 32px; }
-  .footer-links a {
-    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(239,237,232,0.45); text-decoration: none; transition: color 0.2s; font-weight: 400;
-  }
-  .footer-links a:hover { color: var(--gold); }
-  footer p { font-size: 11.5px; color: rgba(239,237,232,0.28); width: 100%; line-height: 1.7; }
-  /* MOBILE */
+  .hs-form-frame, .hs-form-frame iframe { width: 100% !important; border: none !important; }
+
   @media (max-width: 900px) {
-    nav { padding: 18px 24px; }
-    .hero-content { padding: 120px 24px 72px; }
-    .contact { padding: 72px 24px; }
     .contact-inner { grid-template-columns: 1fr; gap: 48px; }
-    .form-panel { padding: 36px 24px; }
-    .other-ways { padding: 64px 24px; }
-    .ways-grid { grid-template-columns: 1fr; }
-    .way-card { border-right: none; border-bottom: 1px solid var(--rule); }
-    .way-card:last-child { border-bottom: none; }
+    .other-ways-grid { grid-template-columns: 1fr; }
+    .other-way { border-right: none; border-bottom: 1px solid var(--rule); }
+    .other-way:last-child { border-bottom: none; }
     footer { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
   }
+
 </style>
 </head>
 <body>

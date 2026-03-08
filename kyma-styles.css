@@ -1,37 +1,44 @@
-/* ============================================================
-   KYMA PARTNERS — Shared Stylesheet
-   kyma-styles.css
-   
-   To change the entire site's color scheme, edit the
-   :root variables below. Changes apply to all pages instantly.
-   ============================================================ */
+/*
+  ════════════════════════════════════════════════════════════════════
+  KYMA PARTNERS — SHARED STYLESHEET
+  kyma-styles.css
 
-/* ── GOOGLE FONTS ── */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+  This file controls the look and feel of every page on withkyma.com.
+  Change something here and it updates across the entire site.
 
-/* ── COLOR VARIABLES ── */
-/* Edit these to change the color scheme across the entire site */
+  HOW TO USE THIS FILE:
+  ─ To change a color: edit the value next to its name in :root below
+  ─ To change a font size: find the relevant CSS rule by section label
+  ─ Each section is labeled with ══ markers for easy navigation
+  ════════════════════════════════════════════════════════════════════
+*/
+
+/* ══════════════════════════════════════════════════════════════════
+   COLORS
+   Change any value here to update that color across the entire site.
+
+   --gold is the most important — it controls buttons, links,
+   borders, and accent elements everywhere.
+   ══════════════════════════════════════════════════════════════════ */
 :root {
-  --ink:        #2b2c33;   /* primary text */
-  --bone:       #efede8;   /* light background sections */
-  --sand:       #e8e5de;   /* slightly darker bone */
-  --tide:       #4e4b4a;   /* secondary text */
-  --tide-light: #797472;   /* muted text */
-  --gold:       #7a4228;   /* primary brand color */
-  --gold-pale:  #975835;   /* hover state for gold */
-  --gold-light: #f4e8e0;   /* gold tint background */
-  --mist:       #8a8d99;   /* placeholder / subtle text */
-  --white:      #f9f8f7;   /* page background */
-  --rule:       #dedad3;   /* borders and dividers */
+  --ink:        #2b2c33;   /* Main text — dark charcoal */
+  --bone:       #efede8;   /* Light section backgrounds */
+  --sand:       #e8e5de;   /* Slightly darker bg / hover states */
+  --tide:       #4e4b4a;   /* Secondary text — warm gray */
+  --tide-light: #797472;   /* Muted text — labels, captions */
+  --gold:       #7a4228;   /* Brand bronze — buttons, borders, headings */
+  --gold-pale:  #975835;   /* Lighter bronze — button hover states */
+  --gold-light: #f4e8e0;   /* Very pale tint — form field focus */
+  --mist:       #8a8d99;   /* Subtle gray — fine print, consent text */
+  --white:      #f9f8f7;   /* Off-white page background */
+  --rule:       #dedad3;   /* Hairline borders and dividers */
 }
 
-/* ── RESET ── */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
+/* ══════════════════════════════════════════════════════════════════
+   RESET & BASE
+   ══════════════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
 body {
@@ -42,23 +49,669 @@ body {
   overflow-x: hidden;
 }
 
-/* ── ANIMATIONS ── */
+
+/* ══════════════════════════════════════════════════════════════════
+   NAVIGATION BAR
+   Controls the fixed top nav on all pages.
+   ── To change nav padding/height: edit padding in nav {}
+   ── To change nav background opacity: edit rgba(...) in background
+   ══════════════════════════════════════════════════════════════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 56px;
+  background: rgba(249,248,247,0.96);
+  border-bottom: 1px solid var(--rule);
+  backdrop-filter: blur(8px);
+}
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; font-weight: 500; letter-spacing: 0.14em;
+  color: var(--gold); text-decoration: none;
+  flex-shrink: 0;
+}
+.logo span { color: var(--tide-light); }
+.nav-links {
+  display: flex; align-items: center; gap: 36px;
+}
+.nav-links a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px; font-weight: 400;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--tide); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a.active { color: var(--gold); }
+nav a.cta-nav {
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--white); background: var(--gold);
+  padding: 11px 28px; text-decoration: none;
+  transition: background 0.3s;
+  font-family: 'DM Sans', sans-serif; font-weight: 400;
+  white-space: nowrap;
+}
+nav a.cta-nav:hover { background: var(--gold-pale); }
+/* Mobile hamburger toggle */
+.nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.nav-toggle span { display: block; width: 22px; height: 1.5px; background: var(--tide); transition: all 0.3s; }
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  .nav-links {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    background: rgba(249,248,247,0.98); border-bottom: 1px solid var(--rule);
+    flex-direction: column; align-items: flex-start; gap: 0; padding: 8px 0;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 14px 24px; width: 100%; border-bottom: 1px solid var(--rule); }
+  .nav-links a:last-child { border-bottom: none; }
+  .nav-toggle { display: flex; }
+  nav a.cta-nav { display: none; }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   HERO SECTION
+   Used on every main page (not blueprint.html).
+   ── Hero height: change min-height in .hero {}
+   ── Background gradient: edit .hero-bg background values
+   ══════════════════════════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex; align-items: center;
+  overflow: hidden;
+  background: var(--bone);
+}
+/* Inner pages use a shorter hero */
+.hero.hero-short { min-height: 72vh; }
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 100% 50%, rgba(151,88,53,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 0% 100%, rgba(151,88,53,0.05) 0%, transparent 50%),
+    linear-gradient(160deg, #f9f8f7 0%, #efede8 50%, #e8e5de 100%);
+}
+/* Subtle topographic grid overlay */
+.grid-lines {
+  position: absolute; inset: 0; opacity: 0.06;
+  background-image:
+    linear-gradient(var(--tide) 1px, transparent 1px),
+    linear-gradient(90deg, var(--tide) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+/* Animated wave SVG at bottom of hero */
+.wave-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 220px; opacity: 0.07;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 800px;
+  padding: 140px 80px 80px;
+}
+/* Scroll indicator at bottom of full-height hero */
+.scroll-hint {
+  position: absolute; bottom: 40px; left: 80px;
+  font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--tide-light); display: flex; align-items: center; gap: 12px;
+  animation: fadeInUp 1s 1.5s both;
+}
+.scroll-hint::after {
+  content: ''; display: block; width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--tide-light), transparent);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+@keyframes scrollLine { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   TYPOGRAPHY — EYEBROW, HEADINGS, SECTION LABEL
+   ── Eyebrow: small bronze label above headlines
+   ── h1: main page headline (hero)
+   ── h2: section headlines
+   ── .section-label: small uppercase label with line, above h2
+   ══════════════════════════════════════════════════════════════════ */
+.eyebrow {
+  font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 16px;
+  font-weight: 400;
+}
+.eyebrow::before {
+  content: ''; display: block; width: 36px; height: 1px; background: var(--gold);
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(46px, 6.5vw, 84px);
+  font-weight: 300; line-height: 1.06;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+h1 em { font-style: italic; color: var(--gold); }
+
+.hero-sub {
+  font-size: 17px; line-height: 1.75; color: var(--tide);
+  max-width: 520px; margin-bottom: 52px;
+  font-weight: 300;
+}
+.hero-actions {
+  display: flex; gap: 16px; flex-wrap: wrap;
+}
+
+.section-label {
+  font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px;
+  font-weight: 400;
+}
+.section-label::before { content: ''; width: 28px; height: 1px; background: var(--gold); display: block; }
+
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 4.5vw, 56px);
+  font-weight: 300; line-height: 1.12;
+  color: var(--ink);
+}
+h2 em { font-style: italic; color: var(--gold); }
+
+h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 400; color: var(--ink);
+}
+
+/* Section base padding */
+section { padding: 112px 80px; }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   BUTTONS
+   ── .btn-primary    Bronze filled — primary CTA
+   ── .btn-ghost      Sand/outlined — secondary CTA
+   ── .btn-white      White filled — used on gold backgrounds
+   ── .btn-outline-white  Transparent with white border — on gold bg
+   ── .btn-submit     Full-width form submit
+   ── .btn-consult    Full-width secondary form button
+   ══════════════════════════════════════════════════════════════════ */
+.btn-primary {
+  background: var(--gold); color: var(--white);
+  padding: 16px 36px;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: all 0.3s; font-family: 'DM Sans', sans-serif; font-weight: 400;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--gold-pale); transform: translateY(-1px); }
+
+.btn-ghost {
+  background: var(--sand); color: var(--ink);
+  padding: 16px 36px;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  text-decoration: none; border: 1px solid var(--tide); cursor: pointer;
+  transition: all 0.3s; font-family: 'DM Sans', sans-serif; font-weight: 400;
+  display: inline-block;
+}
+.btn-ghost:hover { background: var(--tide); border-color: var(--tide); color: var(--white); }
+
+.btn-white {
+  background: var(--white); color: var(--gold);
+  padding: 16px 36px;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s; font-family: 'DM Sans', sans-serif; font-weight: 400;
+  display: inline-block;
+}
+.btn-white:hover { background: var(--bone); transform: translateY(-1px); }
+
+.btn-outline-white {
+  background: transparent; color: var(--white);
+  padding: 16px 36px;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  text-decoration: none; border: 1px solid rgba(255,255,255,0.45);
+  transition: all 0.3s; font-family: 'DM Sans', sans-serif; font-weight: 400;
+  display: inline-block;
+}
+.btn-outline-white:hover { background: rgba(255,255,255,0.12); border-color: var(--white); }
+
+.btn-submit {
+  width: 100%; padding: 17px;
+  background: var(--gold); color: var(--white);
+  font-family: 'DM Sans', sans-serif; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  border: none; cursor: pointer;
+  transition: background 0.3s;
+}
+.btn-submit:hover { background: var(--gold-pale); }
+
+.btn-consult {
+  width: 100%; padding: 15px;
+  background: var(--sand); color: var(--tide);
+  font-family: 'DM Sans', sans-serif; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  border: 1px solid var(--rule); cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-consult:hover { background: var(--tide); color: var(--white); border-color: var(--tide); }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   METRICS / STATS STRIP
+   Dark band with key numbers. Used on homepage and blueprint.html.
+   ── Numbers: edit .metric-num font-size to resize
+   ── Layout: 4 columns desktop, 2 columns mobile
+   ══════════════════════════════════════════════════════════════════ */
+.metrics {
+  background: var(--ink);
+  padding: 56px 80px;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  position: relative;
+}
+.metric { text-align: center; }
+.metric-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px; font-weight: 300; color: var(--bone);
+  line-height: 1;
+}
+.metric-label {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(239,237,232,0.55); margin-top: 8px;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   STEP CARDS (How It Works grid)
+   3-column grid of numbered steps. Used on homepage and how-it-works page.
+   ══════════════════════════════════════════════════════════════════ */
+.steps {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--rule);
+}
+.step {
+  padding: 48px 40px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+  transition: background 0.3s;
+  background: var(--white);
+}
+.step:nth-child(3n) { border-right: none; }
+.step:nth-last-child(-n+3) { border-bottom: none; }
+.step:hover { background: var(--bone); }
+.step::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: transparent; transition: background 0.3s;
+}
+.step:hover::before { background: var(--gold); }
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px; font-weight: 300;
+  color: rgba(122,66,40,0.42); line-height: 1;
+  margin-bottom: 20px;
+}
+.step h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 400; color: var(--ink);
+  margin-bottom: 14px;
+}
+.step p { font-size: 14.5px; line-height: 1.8; color: var(--tide); }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   OPTION CARDS (Hold vs Exit / Two Paths)
+   2-column layout. Used on homepage and how-it-works page.
+   ══════════════════════════════════════════════════════════════════ */
+.options-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+  margin-top: 56px;
+}
+.option-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  padding: 48px 44px;
+  position: relative; overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.option-card:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(43,44,51,0.08); }
+.option-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+.option-card.hold::before { background: var(--tide); }
+.option-card.exit::before { background: var(--gold); }
+.option-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 400;
+  color: var(--ink); margin-bottom: 12px;
+}
+.option-card .tag {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 20px; display: inline-block; padding: 4px 12px;
+  font-weight: 400;
+}
+.option-card.hold .tag { background: rgba(78,75,74,0.08); color: var(--tide); }
+.option-card.exit .tag { background: rgba(122,66,40,0.09); color: var(--gold); }
+.option-card p { font-size: 14.5px; line-height: 1.85; color: var(--tide); }
+.option-card ul { list-style: none; margin-top: 20px; }
+.option-card ul li {
+  font-size: 14px; color: var(--tide); padding: 9px 0;
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.option-card ul li:last-child { border-bottom: none; }
+.option-card ul li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   WHO WE SERVE CARDS
+   2-column grid. Used on homepage and blueprint.html.
+   ══════════════════════════════════════════════════════════════════ */
+.who-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  border: 1px solid var(--rule);
+  margin-top: 56px;
+}
+.who-card {
+  padding: 44px 40px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.3s;
+}
+.who-card:nth-child(2n) { border-right: none; }
+.who-card:nth-last-child(-n+2) { border-bottom: none; }
+.who-card:hover { background: var(--bone); }
+.who-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 400; color: var(--gold);
+  margin-bottom: 14px;
+}
+.who-card p { font-size: 14px; line-height: 1.8; color: var(--tide); }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   TESTIMONIAL / QUOTE BAND
+   Full-width bronze background with centered quote.
+   ── Quote text: font size controlled by clamp() below
+   ── Background color: change background: var(--gold)
+   ══════════════════════════════════════════════════════════════════ */
+.testimonial {
+  background: var(--gold);
+  padding: 100px 80px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.testimonial::before {
+  content: '\201C';
+  position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 200px; line-height: 1;
+  color: rgba(255,255,255,0.10);
+  pointer-events: none;
+}
+.testimonial blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 3vw, 38px);
+  font-weight: 300; font-style: italic;
+  line-height: 1.45; color: var(--white);
+  max-width: 760px; margin: 0 auto 36px;
+  position: relative; z-index: 1;
+}
+.testimonial cite {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(249,248,247,0.65);
+  font-style: normal; position: relative; z-index: 1;
+  font-weight: 400;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   LEAD CAPTURE / FORM SECTION
+   Two-column layout with white paper preview and form panel.
+   ══════════════════════════════════════════════════════════════════ */
+.capture {
+  background: var(--bone);
+  border-top: 1px solid var(--rule);
+  position: relative; overflow: hidden;
+}
+.capture::before {
+  content: 'KYMA';
+  position: absolute;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 260px; font-weight: 600;
+  color: rgba(122,66,40,0.04);
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  white-space: nowrap; pointer-events: none;
+  letter-spacing: 0.05em;
+}
+.capture-inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 88px;
+  align-items: start;
+}
+.capture-left h2 { margin-bottom: 20px; }
+.capture-left p {
+  font-size: 16px; line-height: 1.85; color: var(--tide); margin-bottom: 36px;
+}
+.whitepaper-preview {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold);
+  padding: 28px 32px;
+  margin-top: 0;
+}
+.whitepaper-preview h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 400; color: var(--ink); margin-bottom: 16px;
+}
+.whitepaper-preview ul { list-style: none; }
+.whitepaper-preview ul li {
+  font-size: 13px; color: var(--tide); padding: 6px 0;
+  border-bottom: 1px solid var(--rule);
+  display: flex; gap: 10px; line-height: 1.6;
+}
+.whitepaper-preview ul li:last-child { border-bottom: none; }
+.whitepaper-preview ul li::before { content: '✦'; color: var(--gold); font-size: 8px; margin-top: 4px; flex-shrink: 0; }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   FORM PANEL & FIELDS
+   Used anywhere there's a contact or referral form.
+   ══════════════════════════════════════════════════════════════════ */
+.form-panel {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  padding: 52px 48px;
+  color: var(--ink);
+}
+.form-panel h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px; font-weight: 400;
+  color: var(--ink); margin-bottom: 8px;
+}
+.form-panel .form-sub, .form-sub {
+  font-size: 14px; color: var(--tide-light); margin-bottom: 32px;
+  line-height: 1.65;
+}
+.form-group { margin-bottom: 18px; }
+.form-group label {
+  display: block; font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--tide-light); margin-bottom: 7px;
+  font-weight: 400;
+}
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; padding: 13px 14px;
+  border: 1px solid var(--rule); border-radius: 0;
+  font-family: 'DM Sans', sans-serif; font-size: 14.5px; color: var(--ink);
+  background: var(--white);
+  transition: border-color 0.2s;
+  outline: none; appearance: none;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--gold);
+  background: var(--gold-light);
+}
+.form-group textarea { min-height: 80px; resize: vertical; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-panel .consent, .consent {
+  font-size: 12px; color: var(--mist); line-height: 1.6; margin: 18px 0 24px;
+}
+.form-divider {
+  text-align: center; margin: 16px 0;
+  font-size: 10px; color: var(--mist); letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.success-msg {
+  display: none; text-align: center; padding: 40px 20px;
+}
+.success-msg .check {
+  width: 60px; height: 60px; background: var(--gold);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px; font-size: 24px; color: white;
+}
+.success-msg h3 {
+  font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 400;
+  color: var(--ink); margin-bottom: 10px;
+}
+.success-msg p { color: var(--tide-light); font-size: 15px; line-height: 1.7; }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   CTA SECTION (Gold background with centered headline + buttons)
+   Used on About, Resources, How It Works pages.
+   ══════════════════════════════════════════════════════════════════ */
+.cta-section {
+  background: var(--gold);
+  padding: 100px 80px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: 'KYMA';
+  position: absolute;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 260px; font-weight: 600;
+  color: rgba(255,255,255,0.06);
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  white-space: nowrap; pointer-events: none;
+  letter-spacing: 0.05em;
+}
+.cta-section h2 {
+  color: var(--white);
+  margin-bottom: 20px;
+  position: relative; z-index: 1;
+}
+.cta-section h2 em { color: rgba(255,255,255,0.75); }
+.cta-section p {
+  font-size: 16px; line-height: 1.8;
+  color: rgba(249,248,247,0.75);
+  max-width: 520px; margin: 0 auto 44px;
+  position: relative; z-index: 1;
+}
+.cta-actions {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  position: relative; z-index: 1;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   PULL QUOTE (left-bordered quote block)
+   ══════════════════════════════════════════════════════════════════ */
+.pull-quote {
+  border-left: 2px solid var(--gold);
+  padding: 32px 40px;
+  background: var(--bone);
+  margin-bottom: 32px;
+}
+.pull-quote p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 300; font-style: italic;
+  line-height: 1.5; color: var(--ink);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   FOOTER
+   Dark footer with logo, links, and legal disclaimer.
+   ── To update legal text: edit the <p> in each page's footer HTML
+   ══════════════════════════════════════════════════════════════════ */
+footer {
+  background: var(--ink);
+  padding: 56px 80px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 24px;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; color: var(--gold); letter-spacing: 0.14em;
+}
+.footer-links { display: flex; gap: 32px; }
+.footer-links a {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(239,237,232,0.45); text-decoration: none; transition: color 0.2s;
+  font-weight: 400;
+}
+.footer-links a:hover { color: var(--gold); }
+footer p {
+  font-size: 11.5px; color: rgba(239,237,232,0.28);
+  width: 100%; line-height: 1.7;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   ANIMATIONS
+   ── .fade-in classes: animate elements on page load (hero content)
+   ── .reveal class: animate elements as they scroll into view
+      (requires the IntersectionObserver JS in each page)
+   ── .animated-wave: the floating wave SVG in hero backgrounds
+   ══════════════════════════════════════════════════════════════════ */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes waveFloat {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-20px); }
 }
 
-.fade-in          { animation: fadeInUp 0.9s ease both; }
-.fade-in-delay-1  { animation: fadeInUp 0.9s 0.2s ease both; }
-.fade-in-delay-2  { animation: fadeInUp 0.9s 0.4s ease both; }
-.fade-in-delay-3  { animation: fadeInUp 0.9s 0.6s ease both; }
+.fade-in { animation: fadeInUp 0.9s ease both; }
+.fade-in-delay-1 { animation: fadeInUp 0.9s 0.2s ease both; }
+.fade-in-delay-2 { animation: fadeInUp 0.9s 0.4s ease both; }
+.fade-in-delay-3 { animation: fadeInUp 0.9s 0.6s ease both; }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(32px);
+  opacity: 0; transform: translateY(32px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.animated-wave path {
+  animation: waveFloat 6s ease-in-out infinite;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   MOBILE — GLOBAL RESPONSIVE OVERRIDES
+   These apply across all pages at screen widths below 900px.
+   ══════════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  section { padding: 72px 24px; }
+  .hero-content { padding: 110px 24px 60px; }
+  .metrics { padding: 40px 24px; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .steps { grid-template-columns: 1fr; }
+  .step:nth-child(3n) { border-right: 1px solid var(--rule); }
+  .step:nth-last-child(-n+3) { border-bottom: 1px solid var(--rule); }
+  .step:last-child { border-bottom: none; }
+  .options-grid { grid-template-columns: 1fr; }
+  .who-grid { grid-template-columns: 1fr; }
+  .who-card:nth-child(2n) { border-right: 1px solid var(--rule); }
+  .who-card:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
+  .who-card:last-child { border-bottom: none; }
+  .capture-inner { grid-template-columns: 1fr; gap: 48px; }
+  footer { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
+  .testimonial { padding: 72px 24px; }
+  .form-row { grid-template-columns: 1fr; }
+  .cta-section { padding: 72px 24px; }
 }

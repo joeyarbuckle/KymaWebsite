@@ -4,93 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About | Kyma Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="kyma-styles.css">
+
 <style>
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 22px 56px;
-    background: rgba(249,248,247,0.96);
-    border-bottom: 1px solid var(--rule);
-    backdrop-filter: blur(8px);
-  }
-  .logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px; font-weight: 500; letter-spacing: 0.14em;
-    color: var(--gold); text-decoration: none;
-  }
-  .logo span { color: var(--tide-light); }
-  nav a.cta-nav {
-    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--white); background: var(--gold);
-    padding: 11px 28px; text-decoration: none;
-    transition: background 0.3s;
-    font-family: 'DM Sans', sans-serif; font-weight: 400;
-  }
-  nav a.cta-nav:hover { background: var(--gold-pale); }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 72vh;
-    position: relative;
-    display: flex; align-items: center;
-    overflow: hidden;
-    background: var(--bone);
-  }
-
-  .hero-bg {
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 70% 80% at 100% 50%, rgba(151,88,53,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 50% at 0% 100%, rgba(151,88,53,0.05) 0%, transparent 50%),
-      linear-gradient(160deg, #f9f8f7 0%, #efede8 50%, #e8e5de 100%);
-  }
-
-  .grid-lines {
-    position: absolute; inset: 0; opacity: 0.06;
-    background-image:
-      linear-gradient(var(--tide) 1px, transparent 1px),
-      linear-gradient(90deg, var(--tide) 1px, transparent 1px);
-    background-size: 80px 80px;
-  }
-
-  .wave-overlay {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 220px; opacity: 0.07;
-  }
-
-  .hero-content {
-    position: relative; z-index: 2;
-    max-width: 860px;
-    padding: 160px 80px 100px;
-  }
-
-  .eyebrow {
-    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 28px;
-    display: flex; align-items: center; gap: 16px;
-    font-weight: 400;
-  }
-  .eyebrow::before {
-    content: ''; display: block; width: 36px; height: 1px; background: var(--gold);
-  }
-
-  h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(40px, 5.5vw, 72px);
-    font-weight: 300; line-height: 1.08;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    margin-bottom: 32px;
-  }
-  h1 em { font-style: italic; color: var(--gold); }
-
-  .hero-sub {
-    font-size: 17px; line-height: 1.8; color: var(--tide);
-    max-width: 580px;
-    font-weight: 300;
-  }
 
   /* ── CREDENTIALS STRIP ── */
   .credentials {
@@ -102,239 +21,88 @@
   .credential { text-align: center; }
   .credential-num {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 48px; font-weight: 300; color: var(--bone);
-    line-height: 1;
+    font-size: 48px; font-weight: 300; color: var(--bone); line-height: 1;
   }
   .credential-label {
     font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(239,237,232,0.55); margin-top: 8px;
-    line-height: 1.5;
+    color: rgba(239,237,232,0.55); margin-top: 8px; line-height: 1.5;
   }
 
-  /* ── SECTION BASE ── */
-  section { padding: 100px 80px; }
-
-  .section-label {
-    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 20px;
-    display: flex; align-items: center; gap: 12px;
-    font-weight: 400;
-  }
-  .section-label::before { content: ''; width: 28px; height: 1px; background: var(--gold); display: block; }
-
-  h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(32px, 4vw, 52px);
-    font-weight: 300; line-height: 1.12;
-    color: var(--ink);
-  }
-  h2 em { font-style: italic; color: var(--gold); }
-
-  /* ── PHILOSOPHY ── */
+  /* ── PHILOSOPHY SECTION ── */
   .philosophy {
     background: var(--white);
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
   }
-
-  .philosophy-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 88px;
-    align-items: start;
-  }
-
+  .philosophy-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: start; }
   .philosophy-left h2 { margin-bottom: 28px; }
-
-  .philosophy-left p {
-    font-size: 15.5px; line-height: 1.9; color: var(--tide);
-    margin-bottom: 20px;
-  }
-
-  .philosophy-left p + p {
-    padding-top: 20px;
-    border-top: 1px solid var(--rule);
-  }
-
-  .philosophy-right {
-    padding-top: 8px;
-  }
-
-  /* Pull quote */
-  .pull-quote {
-    border-left: 2px solid var(--gold);
-    padding: 32px 40px;
-    background: var(--bone);
-    margin-bottom: 32px;
-  }
-  .pull-quote p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px; font-weight: 300; font-style: italic;
-    line-height: 1.5; color: var(--ink);
-  }
-
-  /* Principle cards */
-  .principles {
-    border: 1px solid var(--rule);
-  }
-  .principle {
-    padding: 28px 32px;
-    border-bottom: 1px solid var(--rule);
-    transition: background 0.3s;
-  }
+  .philosophy-left p { font-size: 15.5px; line-height: 1.9; color: var(--tide); margin-bottom: 20px; }
+  .philosophy-left p + p { padding-top: 20px; border-top: 1px solid var(--rule); }
+  .philosophy-right { padding-top: 8px; }
+  .principles { border: 1px solid var(--rule); }
+  .principle { padding: 28px 32px; border-bottom: 1px solid var(--rule); transition: background 0.3s; }
   .principle:last-child { border-bottom: none; }
   .principle:hover { background: var(--bone); }
   .principle h4 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 19px; font-weight: 500;
-    color: var(--gold); margin-bottom: 8px;
+    font-size: 19px; font-weight: 500; color: var(--gold); margin-bottom: 8px;
   }
-  .principle p {
-    font-size: 14px; line-height: 1.75; color: var(--tide);
-  }
+  .principle p { font-size: 14px; line-height: 1.75; color: var(--tide); }
 
-  /* ── CAREER ── */
+  /* ── CAREER SECTION ── */
   .career {
     background: var(--bone);
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
   }
-
   .career-header { margin-bottom: 56px; max-width: 600px; }
-  .career-header p {
-    margin-top: 20px; font-size: 16px; line-height: 1.85; color: var(--tide);
-  }
-
-  .career-list {
-    border: 1px solid var(--rule);
-  }
-
+  .career-header p { margin-top: 20px; font-size: 16px; line-height: 1.85; color: var(--tide); }
+  .career-list { border: 1px solid var(--rule); }
   .career-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 28px 40px;
-    border-bottom: 1px solid var(--rule);
-    background: var(--white);
-    transition: background 0.3s;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 40px; border-bottom: 1px solid var(--rule);
+    background: var(--white); transition: background 0.3s;
   }
   .career-row:last-child { border-bottom: none; }
   .career-row:hover { background: var(--gold-light); }
-
-  .career-left {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-  }
-
+  .career-left { display: flex; align-items: center; gap: 40px; }
   .career-period {
     font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--gold); font-weight: 400;
-    white-space: nowrap; min-width: 130px;
+    color: var(--gold); font-weight: 400; white-space: nowrap; min-width: 130px;
   }
-
-  .career-firm {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px; font-weight: 400;
-    color: var(--ink);
-  }
-
+  .career-firm { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--ink); }
   .career-title {
     font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--tide-light); font-weight: 400;
-    text-align: right;
+    color: var(--tide-light); font-weight: 400; text-align: right;
   }
 
   /* ── ASSET CLASSES ── */
-  .asset-classes {
-    background: var(--white);
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .asset-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    border: 1px solid var(--rule);
-    margin-top: 56px;
-  }
-  .asset-card {
-    padding: 36px 32px;
-    border-right: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    transition: background 0.3s;
-  }
+  .asset-classes { background: var(--white); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .asset-grid { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--rule); margin-top: 56px; }
+  .asset-card { padding: 36px 32px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); transition: background 0.3s; }
   .asset-card:nth-child(4n) { border-right: none; }
   .asset-card:nth-last-child(-n+4) { border-bottom: none; }
   .asset-card:hover { background: var(--bone); }
-  .asset-card::before {
-    content: ''; display: block;
-    width: 24px; height: 1px;
-    background: var(--gold);
-    margin-bottom: 16px;
-  }
-  .asset-card h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 19px; font-weight: 400;
-    color: var(--ink); margin-bottom: 6px;
-  }
-  .asset-card p {
-    font-size: 12.5px; letter-spacing: 0.06em;
-    color: var(--tide-light); line-height: 1.6;
-    text-transform: uppercase;
-  }
+  .asset-card::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); margin-bottom: 16px; }
+  .asset-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 400; color: var(--ink); margin-bottom: 6px; }
+  .asset-card p { font-size: 12.5px; letter-spacing: 0.06em; color: var(--tide-light); line-height: 1.6; text-transform: uppercase; }
 
   /* ── EDUCATION ── */
-  .education {
-    background: var(--bone);
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .edu-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    margin-top: 56px;
-  }
-
+  .education { background: var(--bone); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 56px; }
   .edu-card {
-    background: var(--white);
-    border: 1px solid var(--rule);
-    padding: 44px 40px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
+    background: var(--white); border: 1px solid var(--rule); padding: 44px 40px;
+    position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;
   }
   .edu-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(43,44,51,0.07); }
-  .edu-card::before {
-    content: ''; position: absolute;
-    top: 0; left: 0; right: 0; height: 3px;
-    background: var(--gold);
-  }
-  .edu-card .degree {
-    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--gold); font-weight: 400; margin-bottom: 14px;
-  }
-  .edu-card h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px; font-weight: 400;
-    color: var(--ink); margin-bottom: 8px; line-height: 1.2;
-  }
-  .edu-card .field {
-    font-size: 14px; color: var(--tide); line-height: 1.6;
-    margin-bottom: 20px; padding-bottom: 20px;
-    border-bottom: 1px solid var(--rule);
-  }
-  .edu-card .detail {
-    font-size: 13px; color: var(--tide-light); line-height: 1.7;
-  }
+  .edu-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gold); }
+  .edu-card .degree { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); font-weight: 400; margin-bottom: 14px; }
+  .edu-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: var(--ink); margin-bottom: 8px; line-height: 1.2; }
+  .edu-card .field { font-size: 14px; color: var(--tide); line-height: 1.6; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
+  .edu-card .detail { font-size: 13px; color: var(--tide-light); line-height: 1.7; }
 
   /* ── FOUNDER DIVIDER ── */
-  .founder-divider {
-    background: var(--ink);
-    padding: 72px 80px;
-  }
+  .founder-divider { background: var(--ink); padding: 72px 80px; }
   .founder-divider-inner { max-width: 640px; }
   .founder-divider .section-label { color: rgba(239,237,232,0.5); }
   .founder-divider .section-label::before { background: rgba(239,237,232,0.3); }
@@ -342,160 +110,23 @@
   .founder-divider h2 em { color: var(--gold-pale); }
 
   /* ── FOUNDER SECTIONS ── */
-  .founder-section {
-    padding: 80px 80px;
-    border-bottom: 1px solid var(--rule);
-  }
+  .founder-section { padding: 80px 80px; border-bottom: 1px solid var(--rule); }
   .founder-light { background: var(--white); border-top: 1px solid var(--rule); }
   .founder-bone { background: var(--bone); }
-
   .founder-header { margin-bottom: 48px; }
-
   .founder-name-block { margin-bottom: 32px; }
-  .founder-tag {
-    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--gold); font-weight: 400; margin-bottom: 12px;
-    display: flex; align-items: center; gap: 12px;
-  }
+  .founder-tag { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); font-weight: 400; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
   .founder-tag::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: block; }
-
-  .founder-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 4vw, 52px);
-    font-weight: 300; line-height: 1.1;
-    color: var(--ink); margin-bottom: 10px;
-  }
-  .founder-title-line {
-    font-size: 13px; letter-spacing: 0.08em;
-    color: var(--tide-light); line-height: 1.6;
-  }
-
-  .founder-bio {
-    font-size: 15.5px; line-height: 1.9; color: var(--tide);
-    max-width: 760px; margin-bottom: 16px;
-  }
-
-  .founder-career { margin-bottom: 32px; }
-  .founder-edu { }
-
-  .founder-career-label {
-    font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
-    color: var(--tide-light); font-weight: 400;
-    margin-bottom: 12px;
-  }
-
-  /* Placeholder styling */
-  .placeholder-note {
-    color: var(--mist) !important;
-    font-style: italic;
-    border-left: 2px solid var(--rule);
-    padding-left: 16px;
-    background: rgba(138,141,153,0.06);
-    padding: 12px 16px;
-  }
-  .placeholder-row .career-firm,
-  .placeholder-row .career-title,
-  .placeholder-row .career-period {
-    color: var(--mist) !important;
-    font-style: italic;
-  }
+  .founder-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 52px); font-weight: 300; line-height: 1.1; color: var(--ink); margin-bottom: 10px; }
+  .founder-title-line { font-size: 13px; letter-spacing: 0.08em; color: var(--tide-light); line-height: 1.6; }
+  .founder-bio { font-size: 15.5px; line-height: 1.9; color: var(--tide); max-width: 760px; margin-bottom: 16px; }
+  .founder-career-label { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--tide-light); font-weight: 400; margin-bottom: 12px; }
+  .placeholder-note { color: var(--mist) !important; font-style: italic; border-left: 2px solid var(--rule); padding-left: 16px; background: rgba(138,141,153,0.06); padding: 12px 16px; }
+  .placeholder-row .career-firm, .placeholder-row .career-title, .placeholder-row .career-period { color: var(--mist) !important; font-style: italic; }
   .placeholder-row { background: rgba(138,141,153,0.04); }
-  .cta-section {
-    background: var(--gold);
-    padding: 100px 80px;
-    text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .cta-section::before {
-    content: 'KYMA';
-    position: absolute;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 260px; font-weight: 600;
-    color: rgba(255,255,255,0.06);
-    top: 50%; left: 50%; transform: translate(-50%, -50%);
-    white-space: nowrap; pointer-events: none;
-    letter-spacing: 0.05em;
-  }
-  .cta-section h2 {
-    color: var(--white);
-    margin-bottom: 20px;
-    position: relative; z-index: 1;
-  }
-  .cta-section h2 em { color: rgba(255,255,255,0.75); }
-  .cta-section p {
-    font-size: 16px; line-height: 1.8;
-    color: rgba(249,248,247,0.75);
-    max-width: 520px; margin: 0 auto 44px;
-    position: relative; z-index: 1;
-  }
-  .cta-actions {
-    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-    position: relative; z-index: 1;
-  }
-  .btn-white {
-    background: var(--white); color: var(--gold);
-    padding: 16px 36px;
-    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.3s; font-family: 'DM Sans', sans-serif; font-weight: 400;
-    display: inline-block;
-  }
-  .btn-white:hover { background: var(--bone); transform: translateY(-1px); }
-  .btn-outline-white {
-    background: transparent; color: var(--white);
-    padding: 16px 36px;
-    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-    text-decoration: none; border: 1px solid rgba(255,255,255,0.45);
-    transition: all 0.3s; font-family: 'DM Sans', sans-serif; font-weight: 400;
-    display: inline-block;
-  }
-  .btn-outline-white:hover { background: rgba(255,255,255,0.12); border-color: var(--white); }
 
-  /* ── FOOTER ── */
-  footer {
-    background: var(--ink);
-    padding: 56px 80px;
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 24px;
-  }
-  .footer-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px; color: var(--gold); letter-spacing: 0.14em;
-  }
-  .footer-links { display: flex; gap: 32px; }
-  .footer-links a {
-    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(239,237,232,0.45); text-decoration: none; transition: color 0.2s;
-    font-weight: 400;
-  }
-  .footer-links a:hover { color: var(--gold); }
-  footer p {
-    font-size: 11.5px; color: rgba(239,237,232,0.28);
-    width: 100%; line-height: 1.7;
-  }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .fade-in { animation: fadeInUp 0.9s ease both; }
-  .fade-in-delay-1 { animation: fadeInUp 0.9s 0.2s ease both; }
-  .fade-in-delay-2 { animation: fadeInUp 0.9s 0.4s ease both; }
-
-  .reveal {
-    opacity: 0; transform: translateY(32px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* ── MOBILE ── */
   @media (max-width: 900px) {
-    nav { padding: 18px 24px; }
-    .hero-content { padding: 120px 24px 72px; }
     .credentials { padding: 40px 24px; grid-template-columns: repeat(2, 1fr); gap: 32px; }
-    section { padding: 72px 24px; }
     .philosophy-inner { grid-template-columns: 1fr; gap: 48px; }
     .founder-section { padding: 64px 24px; }
     .founder-divider { padding: 56px 24px; }
@@ -508,9 +139,9 @@
     .asset-card:nth-last-child(-n+4) { border-bottom: 1px solid var(--rule); }
     .asset-card:nth-last-child(-n+2) { border-bottom: none; }
     .edu-grid { grid-template-columns: 1fr; }
-    .cta-section { padding: 72px 24px; }
     footer { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
   }
+
 </style>
 </head>
 <body>
